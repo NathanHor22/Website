@@ -136,6 +136,53 @@
         }
 
         /* === INTRODUCTION SECTION === */
+
+        .centered-intro {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 48px;
+        }
+
+        .large-profile-img {
+            width: 180px;
+            height: 180px;
+        }
+
+        .centered-text-block {
+            align-items: center;
+            text-align: center;
+        }
+
+        .large-main-title {
+            font-size: 48px;
+            margin-bottom: 18px;
+        }
+
+        .large-subtitle {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+@media (max-width: 900px) {
+    .large-profile-img {
+        width: 140px;
+        height: 140px;
+    }
+    .large-main-title {
+        font-size: 36px;
+    }
+    .large-subtitle {
+        font-size: 18px;
+    }
+}
+        .intro-flex {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        
         .main-content.intro-section {
             display: flex;
             flex-direction: column;
@@ -386,14 +433,21 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 48px;
-            margin-bottom: 24px;
+            justify-content: flex-end;
+            margin-top: auto;
+            margin-bottom: 32px;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding-bottom: 32px;
+            background: transparent;
         }
         .github-portfolio-text {
             font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 20px;
+            font-size: 22px;
             color: #222;
-            margin-bottom: 12px;
+            margin-top: 18px;
             text-align: center;
         }
         .github-link {
@@ -401,12 +455,16 @@
             transition: transform 0.15s;
         }
         .github-link:hover .github-icon {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
         .github-icon {
-            width: 56px;
-            height: 56px;
+            width: 96px;
+            height: 96px;
             display: block;
+        }
+
+        body.dark-mode .github-portfolio-text {
+            color: #f5f7fa;
         }
 
         /* === RESPONSIVE DESIGN === */
@@ -455,14 +513,19 @@
 
     <!-- === INTRODUCTION SECTION === -->
     <div class="main-content intro-section">
-        <div class="main-title">NATHAN HOR</div>
-        <div class="subtitle">
-            <a href="#synthsnip-section" class="founder-link">Founder of Syntech Solutions</a>
+        <div class="intro-flex centered-intro">
+            <img src="images/nathanhor.jpg" alt="Nathan Hor" class="profile-img large-profile-img">
+            <div class="intro-text-block centered-text-block">
+                <div class="main-title large-main-title">NATHAN HOR</div>
+                <div class="subtitle large-subtitle">
+                    <a href="#synthsnip-section" class="founder-link">Founder of Syntech Solutions</a>
+                </div>
+                <div class="subtitle large-subtitle">
+                    <a href="#developer-portfolio" class="founder-link">Java & Unity Developer</a>
+                </div>
+                <div class="subtitle large-subtitle">Photographer & Videographer</div>
+            </div>
         </div>
-        <div class="subtitle">
-            <a href="#developer-portfolio" class="founder-link">Java & Unity Developer</a>
-        </div>
-        <div class="subtitle">Photographer & Videographer</div>
     </div>
 
     <!-- === SYNTHSNIP SECTION === -->
@@ -538,10 +601,10 @@
         </div>
         <div class="github-portfolio-block">
             <div class="github-portfolio-text">
-                Most of my projects can be found in
+                Most of my projects can be found on
             </div>
-            <a href="https://github.com/nathanhor22" target="_blank" class="github-link" aria-label="GitHub Profile">
-                <img src="github_mark.png" alt="GitHub" class="github-icon">
+            <a href="https://github.com/NathanHor22" target="_blank" class="github-link" aria-label="GitHub Profile">
+                <img src="images/github_mark.png" alt="GitHub" class="github-icon">
             </a>
         </div>
     </section>
