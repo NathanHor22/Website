@@ -23,6 +23,71 @@
             font-family: 'Telegraf', Arial, sans-serif;
         }
 
+        /* === THEME TOGGLE BUTTON === */
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            font-size: 26px;
+            margin-left: 18px;
+            cursor: pointer;
+            color: #222;
+            transition: color 0.2s;
+        }
+        .theme-toggle-btn:hover {
+            color: #4f8cff;
+        }
+
+        /* === DARK MODE === */
+        body.dark-mode {
+            background: #181a1b;
+            color: #f5f7fa;
+        }
+        body.dark-mode .main-content,
+        body.dark-mode .main-content.intro-section,
+        body.dark-mode .main-content.synthsnip-section,
+        body.dark-mode .developer-portfolio-section,
+        body.dark-mode section {
+            background: #23272a;
+            color: #f5f7fa;
+        }
+        body.dark-mode .portfolio-btn,
+        body.dark-mode .lets-talk-btn {
+            background: #222e3c;
+            color: #f5f7fa;
+        }
+        body.dark-mode .portfolio-btn:hover {
+            background: #4f8cff;
+            color: #fff;
+        }
+        body.dark-mode .portfolio-dropdown {
+            background: #23272a;
+            color: #f5f7fa;
+        }
+        body.dark-mode .github-portfolio-text {
+            color: #f5f7fa;
+        }
+        body.dark-mode .cta-title,
+        body.dark-mode .cta-subtitle {
+            color: #f5f7fa;
+        }
+        body.dark-mode .synthsnip-title,
+        body.dark-mode .synthsnip-subtitle {
+            color: #f5f7fa;
+        }
+        body.dark-mode .about-title,
+        body.dark-mode .about-link {
+            color: #f5f7fa;
+        }
+        body.dark-mode .github-link {
+            filter: invert(1);
+        }
+
+        body.dark-mode .who-main-title,
+        body.dark-mode .who-title,
+        body.dark-mode .who-desc {
+            color: #f5f7fa;
+        }
+
         /* === TOP BAR === */
         .top-bar {
             width: 100%;
@@ -163,6 +228,7 @@
         .what-we-do { text-align: right; }
 
         /* === WHO/WHAT BLOCKS === */
+
         .who-main-title {
             font-size: 42px;
             font-family: 'Telegraf', Arial, sans-serif;
@@ -226,6 +292,7 @@
             text-decoration: underline;
         }
 
+        /* === DEVELOPER PORTFOLIO SECTION === */
         .developer-portfolio-section {
             display: flex;
             flex-direction: column;
@@ -239,7 +306,6 @@
             box-sizing: border-box;
             position: relative;
         }
-        /* === PORTFOLIO TITLE === */
         .portfolio-title {
             font-family: 'Telegraf', Arial, sans-serif;
             font-size: 52px;
@@ -249,7 +315,6 @@
             margin-top: 0;
             letter-spacing: 1px;
         }
-
         .portfolio-buttons {
             display: flex;
             justify-content: center;
@@ -257,22 +322,20 @@
             margin-top: 40px;
             flex-wrap: wrap;
         }
-
         .portfolio-project {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%; /* Make each project fill available space */
+            width: 100%;
             max-width: 320px;
             min-width: 220px;
             flex: 1 1 0;
             position: relative;
         }
-
         .portfolio-btn {
             font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 22px; /* Bigger font */
-            padding: 28px 0; /* Taller button */
+            font-size: 22px;
+            padding: 28px 0;
             border: none;
             border-radius: 8px;
             background: #4f8cff;
@@ -280,18 +343,16 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s, color 0.2s, transform 0.1s;
-            width: 100%; /* Fill the project block */
+            width: 100%;
             min-width: 220px;
             max-width: 100%;
             box-sizing: border-box;
         }
-
         .portfolio-btn:hover {
             background: #1a5fd6;
             color: #fff;
             transform: translateY(-2px) scale(1.04);
         }
-
         .portfolio-dropdown {
             display: none;
             background: #f5f7fa;
@@ -307,22 +368,48 @@
             box-sizing: border-box;
             transition: all 0.2s;
         }
-
         .portfolio-dropdown.open {
             display: block;
         }
-
         .portfolio-dropdown ul {
             padding-left: 18px;
             margin: 0;
         }
-
         .portfolio-dropdown li {
             margin-bottom: 6px;
             font-size: 13px;
             text-align: justify;
         }
 
+        /* === GITHUB SECTION === */
+        .github-portfolio-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 48px;
+            margin-bottom: 24px;
+        }
+        .github-portfolio-text {
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .github-link {
+            display: inline-block;
+            transition: transform 0.15s;
+        }
+        .github-link:hover .github-icon {
+            transform: scale(1.1);
+        }
+        .github-icon {
+            width: 56px;
+            height: 56px;
+            display: block;
+        }
+
+        /* === RESPONSIVE DESIGN === */
         @media (max-width: 1100px) {
             .portfolio-buttons {
                 gap: 16px;
@@ -331,37 +418,6 @@
                 width: 90vw;
                 max-width: 350px;
             }
-        }
-
-        .github-portfolio-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 48px;
-            margin-bottom: 24px;
-        }
-
-        .github-portfolio-text {
-            font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 20px;
-            color: #222;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .github-link {
-            display: inline-block;
-            transition: transform 0.15s;
-        }
-
-        .github-link:hover .github-icon {
-            transform: scale(1.1);
-        }
-
-        .github-icon {
-            width: 56px;
-            height: 56px;
-            display: block;
         }
         @media (max-width: 900px) {
             .portfolio-buttons {
@@ -373,10 +429,6 @@
                 width: 90vw;
                 max-width: 350px;
             }
-        }
-
-        /* === RESPONSIVE DESIGN === */
-        @media (max-width: 900px) {
             .main-content.intro-section { padding-left: 0; align-items: center; }
             .synthsnip-flex-row {
                 flex-direction: column;
@@ -398,6 +450,7 @@
     <div class="top-bar">
         <a href="#synthsnip-section" class="about-title about-link">About SynthSnip</a>
         <button class="lets-talk-btn" onclick="document.getElementById('lets-talk').scrollIntoView({behavior:'smooth'})">Let's talk</button>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark mode">🌙</button>
     </div>
 
     <!-- === INTRODUCTION SECTION === -->
@@ -439,59 +492,59 @@
     </section>
 
     <!-- === DEVELOPER PORTFOLIO SECTION === -->
-<section id="developer-portfolio" class="main-content developer-portfolio-section">
-    <div class="portfolio-title">Developer Portfolio</div>
-    <div class="portfolio-buttons">
-        <div class="portfolio-project">
-            <button class="portfolio-btn" onclick="toggleDropdown(this)">Banking App using Java</button>
-            <div class="portfolio-dropdown">
-                <ul>
-                    <li>Developed a resilient console-based banking system using Java and MySQL, emphasizing secure user authentication, data integrity, and transaction reliability.</li>
-                    <li>Implemented encryption protocols and streamlined database connectivity via JDBC to ensure seamless backend operations.</li>
-                    <li>Applied object-oriented design principles to enhance system maintainability and scalability; utilized MySQL Workbench for efficient database administration and troubleshooting support.</li>
-                </ul>
+    <section id="developer-portfolio" class="main-content developer-portfolio-section">
+        <div class="portfolio-title">Developer Portfolio</div>
+        <div class="portfolio-buttons">
+            <div class="portfolio-project">
+                <button class="portfolio-btn" onclick="toggleDropdown(this)">Banking App using Java</button>
+                <div class="portfolio-dropdown">
+                    <ul>
+                        <li>Developed a resilient console-based banking system using Java and MySQL, emphasizing secure user authentication, data integrity, and transaction reliability.</li>
+                        <li>Implemented encryption protocols and streamlined database connectivity via JDBC to ensure seamless backend operations.</li>
+                        <li>Applied object-oriented design principles to enhance system maintainability and scalability; utilized MySQL Workbench for efficient database administration and troubleshooting support.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portfolio-project">
+                <button class="portfolio-btn" onclick="toggleDropdown(this)">2D Platformer using GameMaker Studio 2</button>
+                <div class="portfolio-dropdown">
+                    <ul>
+                        <li>Engineered a full-featured 2D platformer/shooter in GameMaker Studio 2, complete with fluid movement, enemy AI, and level progression.</li>
+                        <li>Architected a custom save system and modular shooting mechanics, including weapon logic, projectile physics, and cooldown balancing.</li>
+                        <li>Directed all aspects of gameplay design, asset integration, and UX refinement to deliver a cohesive and engaging player experience.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portfolio-project">
+                <button class="portfolio-btn" onclick="toggleDropdown(this)">Weather App using Java</button>
+                <div class="portfolio-dropdown">
+                    <ul>
+                        <li>Engineered a weather application by integrating OpenWeatherMap and Geolocation APIs to deliver real-time, precise weather forecasts.</li>
+                        <li>Developed an intuitive Java Swing GUI focused on seamless user experience, enabling interactive data visualization.</li>
+                        <li>Implemented robust JSON parsing and error handling to efficiently process API responses and ensure accurate, responsive weather updates.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portfolio-project">
+                <button class="portfolio-btn" onclick="toggleDropdown(this)">3D Survival Horror game using Unity</button>
+                <div class="portfolio-dropdown">
+                    <ul>
+                        <li>Integrated in-game analytics to track player behavior, progression patterns, and interaction data across multiple levels.</li>
+                        <li>Analyzed gameplay metrics to inform design iterations, balancing difficulty and improving user experience through data-driven decisions.</li>
+                        <li>Managed end-to-end development, incorporating structured testing, performance tuning, and technical documentation to support review and evaluation.</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="portfolio-project">
-            <button class="portfolio-btn" onclick="toggleDropdown(this)">2D Platformer using GameMaker Studio 2</button>
-            <div class="portfolio-dropdown">
-                <ul>
-                    <li>Engineered a full-featured 2D platformer/shooter in GameMaker Studio 2, complete with fluid movement, enemy AI, and level progression</li>
-                    <li>Architected a custom save system and modular shooting mechanics, including weapon logic, projectile physics, and cooldown balancing</li>
-                    <li>Directed all aspects of gameplay design, asset integration, and UX refinement to deliver a cohesive and engaging player experience</li>
-                </ul>
+        <div class="github-portfolio-block">
+            <div class="github-portfolio-text">
+                Most of my projects can be found in
             </div>
+            <a href="https://github.com/nathanhor22" target="_blank" class="github-link" aria-label="GitHub Profile">
+                <img src="github_mark.png" alt="GitHub" class="github-icon">
+            </a>
         </div>
-        <div class="portfolio-project">
-            <button class="portfolio-btn" onclick="toggleDropdown(this)">Weather App using Java</button>
-            <div class="portfolio-dropdown">
-                <ul>
-                    <li>Engineered a weather application by integrating OpenWeatherMap and Geolocation APIs to deliver real-time, precise weather forecasts.</li>
-                    <li>Developed an intuitive Java Swing GUI focused on seamless user experience, enabling interactive data visualization.</li>
-                    <li>Implemented robust JSON parsing and error handling to efficiently process API responses and ensure accurate, responsive weather updates.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="portfolio-project">
-            <button class="portfolio-btn" onclick="toggleDropdown(this)">3D Survival Horror game using Unity</button>
-            <div class="portfolio-dropdown">
-                <ul>
-                    <li>Integrated in-game analytics to track player behavior, progression patterns, and interaction data across multiple levels.</li>
-                    <li>Analyzed gameplay metrics to inform design iterations, balancing difficulty and improving user experience through data-driven decisions</li>
-                    <li>Managed end-to-end development, incorporating structured testing, performance tuning, and technical documentation to support review and evaluation.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="github-portfolio-block">
-    <div class="github-portfolio-text">
-        Most of my projects can be found in
-    </div>
-    <a href="https://github.com/nathanhor22" target="_blank" class="github-link" aria-label="GitHub Profile">
-        <img src="github-mark.png" alt="GitHub" class="github-icon">
-    </a>
-</div>
-</section>
+    </section>
 
     <!-- === LET'S TALK SECTION === -->
     <section id="lets-talk" style="margin-top:200px; padding:60px; background:#e6ecff;">
@@ -500,11 +553,34 @@
             Contact me at <a href="mailto:your@email.com">your@email.com</a>
         </p>
     </section>
+
+    <!-- === SCRIPTS === -->
     <script>
-function toggleDropdown(btn) {
-    const dropdown = btn.nextElementSibling;
-    dropdown.classList.toggle('open');
-}
-</script>
+    // Theme toggle
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-mode');
+        toggleBtn.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+        if (body.classList.contains('dark-mode')) {
+            toggleBtn.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            toggleBtn.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    // Portfolio dropdowns
+    function toggleDropdown(btn) {
+        const dropdown = btn.nextElementSibling;
+        dropdown.classList.toggle('open');
+    }
+    </script>
 </body>
 </html>
