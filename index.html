@@ -15,15 +15,12 @@
         }
 
         /* === GLOBAL STYLES === */
+        html { scroll-behavior: smooth; }
         body {
             margin: 0;
             background: #f5f7fa;
             color: #222;
             font-family: 'Telegraf', Arial, sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
         }
 
         /* === TOP BAR === */
@@ -48,6 +45,14 @@
             top: 30px;
             letter-spacing: 1px;
             margin: 0;
+        }
+        .about-link {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        .about-link:hover {
+            text-decoration: underline;
         }
         .lets-talk-btn {
             font-family: 'Telegraf', Arial, sans-serif;
@@ -105,24 +110,21 @@
             color: #1a5fd6;
             text-decoration: underline;
         }
-        .intro-bg-color {
-            background: #000000;   /* White background */
-            color: #ffffff;        /* Black text */
-        }
 
         /* === SYNTHSNIP SECTION === */
         .main-content.synthsnip-section {
             display: flex;
             flex-direction: column;
-            align-items: center;        /* Center horizontally */
-            justify-content: flex-start;/* Align to top */
+            align-items: center;
+            justify-content: flex-start;
             min-height: 100vh;
-            padding-top: 60px;          /* Space from top */
-            padding-left: 0;            /* Remove left padding */
+            padding-top: 60px;
+            padding-left: 0;
             box-sizing: border-box;
             background: #fff;
             color: #000;
             width: 100vw;
+            position: relative;
         }
         .synthsnip-title {
             font-family: 'Telegraf', Arial, sans-serif;
@@ -139,11 +141,8 @@
             text-align: center;
             color: #000;
         }
-        .synthsnip-bg-colour {
-            background: #f5f7fa; /* Light gray background, or any color you want */
-            color: #222;         /* Dark text, or any color you want */
-        }
 
+        /* === SYNTHSNIP FLEX ROW === */
         .synthsnip-flex-row {
             display: flex;
             justify-content: space-between;
@@ -151,7 +150,7 @@
             width: 80%;
             margin: 60px auto 0 auto;
             gap: 40px;
-        }   
+        }
         .synthsnip-col {
             flex: 1 1 0;
             max-width: 400px;
@@ -160,23 +159,10 @@
             color: #000;
             text-align: left;
         }
-        .what-we-do {
-            text-align: right;
-        }
-        @media (max-width: 900px) {
-            .synthsnip-flex-row {
-                flex-direction: column;
-                gap: 20px;
-                width: 100%;
-            }
-        .synthsnip-col,.what-we-do {
-                text-align: center;
-                font-size: 32px;
-            }
-        }
-        .synthsnip-col.who-we-are {
-                max-width: 400px; /* or any width you prefer */
-        }
+        .synthsnip-col.who-we-are { max-width: 400px; }
+        .what-we-do { text-align: right; }
+
+        /* === WHO/WHAT BLOCKS === */
         .who-main-title {
             font-size: 42px;
             font-family: 'Telegraf', Arial, sans-serif;
@@ -190,11 +176,12 @@
             font-weight: 700;
             margin-bottom: 10px;
             text-align: left;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.327em;
             display: block;
             width: 100%;
             max-width: 100%;
         }
+        .nextgen-title { letter-spacing: 0.15em; }
         .who-desc {
             font-size: 18px;
             font-family: 'Telegraf', Arial, sans-serif;
@@ -202,17 +189,46 @@
             text-align: justify;
             line-height: 1.5;
         }
-        @media (max-width: 900px) {
-            .who-title {
-                text-align: center;
-            }
-            .who-desc {
-                text-align: justify;
-                font-size: 20px;
-            }
+
+        /* === SYNTHSNIP BOTTOM CTA === */
+        .synthsnip-bottom-cta {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            position: absolute;
+            left: 0;
+            bottom: 40px;
         }
+        .cta-subtitle {
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        .cta-title {
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 64px;
+            font-weight: 400;
+            text-align: center;
+            margin-top: 0;
+            line-height: 1.1;
+        }
+        .cta-link {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: text-decoration 0.2s;
+        }
+        .cta-link:hover {
+            text-decoration: underline;
+        }
+
         /* === RESPONSIVE DESIGN === */
         @media (max-width: 900px) {
+            .main-content.intro-section { padding-left: 0; align-items: center; }
             .synthsnip-flex-row {
                 flex-direction: column;
                 gap: 20px;
@@ -223,21 +239,15 @@
                 max-width: 90vw;
                 text-align: center;
             }
-            .who-main-title,
-            .who-title {
-                text-align: center;
-            }
-            .who-desc {
-                text-align: justify;
-                font-size: 16px;
-            }
+            .who-main-title, .who-title { text-align: center; }
+            .who-desc { text-align: justify; font-size: 16px; }
         }
     </style>
 </head>
 <body>
     <!-- === TOP BAR === -->
     <div class="top-bar">
-        <div class="about-title">About SynthSnip</div>
+        <a href="#synthsnip-section" class="about-title about-link">About SynthSnip</a>
         <button class="lets-talk-btn" onclick="document.getElementById('lets-talk').scrollIntoView({behavior:'smooth'})">Let's talk</button>
     </div>
 
@@ -252,31 +262,37 @@
     </div>
 
     <!-- === SYNTHSNIP SECTION === -->
-<section id="synthsnip-section" class="main-content synthsnip-section">
-    <div class="synthsnip-title">SynthSnip</div>
-    <div class="synthsnip-subtitle">powered by Syntech Solutions</div>
-    <div class="synthsnip-flex-row">
-        <div class="synthsnip-col who-we-are">
-            <div class="who-main-title">Who we are</div>
-            <div class="who-title">Syntech Solutions</div>
-            <div class="who-desc">
-                is a tech-driven innovator redefining vocational training through immersive technologies. Our flagship project, SynthSnip, combines VR, AI, and custom-built haptic gloves to deliver realistic, sustainable, and cost-effective hairdressing and barbering education, transforming how hands-on skills are taught and experienced.
+    <section id="synthsnip-section" class="main-content synthsnip-section">
+        <div class="synthsnip-title">SynthSnip</div>
+        <div class="synthsnip-subtitle">powered by Syntech Solutions</div>
+        <div class="synthsnip-flex-row">
+            <div class="synthsnip-col who-we-are">
+                <div class="who-main-title">Who we are</div>
+                <div class="who-title">Syntech Solutions</div>
+                <div class="who-desc">
+                    is a tech-driven innovator redefining vocational training through immersive technologies. Our flagship project, SynthSnip, combines VR, AI, and custom-built haptic gloves to deliver realistic, sustainable, and cost-effective hairdressing and barbering education, transforming how hands-on skills are taught and experienced.
+                </div>
+            </div>
+            <div class="synthsnip-col what-we-do">
+                <div class="who-main-title">What we do</div>
+                <div class="who-title nextgen-title">Next Gen VR Barbering</div>
+                <div class="who-desc">
+                    Using Unity XR and custom-built haptic gloves, we offer a realistic, cost-effective, and sustainable alternative to traditional mannequin-based training. Our technology reduces material waste while delivering hands-on, tactile feedback that simulates real haircutting, helping students learn faster, smarter, and greener.
+                </div>
             </div>
         </div>
-        <div class="synthsnip-col what-we-do">
-            <div class="who-main-title">What we do</div>
-            <div class="who-title">Next Gen VR Barbering</div>
-            <div class="who-desc">
-                Using Unity XR and custom-built haptic gloves, we offer a realistic, cost-effective, and sustainable alternative to traditional mannequin-based training. Our technology reduces material waste while delivering hands-on, tactile feedback that simulates real haircutting, helping students learn faster, smarter, and greener.
-            </div>
+        <div class="synthsnip-bottom-cta">
+            <div class="cta-subtitle">Help Us Transform Hairdressing Education</div>
+            <a href="#lets-talk" class="cta-title cta-link">Partner with Us</a>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- === LET'S TALK SECTION === -->
     <section id="lets-talk" style="margin-top:200px; padding:60px; background:#e6ecff;">
         <h2 style="font-family:'Telegraf',Arial,sans-serif; font-size:28px;">Let's Talk</h2>
-        <p style="font-family:'Telegraf',Arial,sans-serif; font-size:18px;">Contact me at <a href="mailto:your@email.com">your@email.com</a></p>
+        <p style="font-family:'Telegraf',Arial,sans-serif; font-size:18px;">
+            Contact me at <a href="mailto:your@email.com">your@email.com</a>
+        </p>
     </section>
 </body>
 </html>
