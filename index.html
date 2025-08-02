@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SynthSnip Landing</title>
     <style>
-        /* === FONT IMPORT === */
         @font-face {
             font-family: 'Telegraf';
-            src: url('fonts/Telegraf-Regular.woff2') format('woff2'),
-                 url('fonts/Telegraf-Regular.woff') format('woff');
+            src: url('fonts/PPTelegraf-Regular.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
-
-        /* === GLOBAL STYLES === */
         html { scroll-behavior: smooth; }
         body {
             margin: 0;
@@ -22,8 +18,6 @@
             color: #222;
             font-family: 'Telegraf', Arial, sans-serif;
         }
-
-        /* === THEME TOGGLE BUTTON === */
         .theme-toggle-btn {
             background: none;
             border: none;
@@ -33,15 +27,8 @@
             color: #222;
             transition: color 0.2s;
         }
-        .theme-toggle-btn:hover {
-            color: #4f8cff;
-        }
-
-        /* === DARK MODE === */
-        body.dark-mode {
-            background: #181a1b;
-            color: #f5f7fa;
-        }
+        .theme-toggle-btn:hover { color: #4f8cff; }
+        body.dark-mode { background: #181a1b; color: #f5f7fa; }
         body.dark-mode .main-content,
         body.dark-mode .main-content.intro-section,
         body.dark-mode .main-content.synthsnip-section,
@@ -67,28 +54,19 @@
             color: #f5f7fa;
         }
         body.dark-mode .cta-title,
-        body.dark-mode .cta-subtitle {
-            color: #f5f7fa;
-        }
+        body.dark-mode .cta-subtitle,
         body.dark-mode .synthsnip-title,
-        body.dark-mode .synthsnip-subtitle {
-            color: #f5f7fa;
-        }
+        body.dark-mode .synthsnip-subtitle,
         body.dark-mode .about-title,
         body.dark-mode .about-link {
             color: #f5f7fa;
         }
-        body.dark-mode .github-link {
-            filter: invert(1);
-        }
-
+        body.dark-mode .github-link { filter: invert(1); }
         body.dark-mode .who-main-title,
         body.dark-mode .who-title,
         body.dark-mode .who-desc {
             color: #f5f7fa;
         }
-
-        /* === TOP BAR === */
         .top-bar {
             width: 100%;
             display: flex;
@@ -116,81 +94,61 @@
             color: inherit;
             cursor: pointer;
         }
-        .about-link:hover {
-            text-decoration: underline;
-        }
+        .about-link:hover { text-decoration: underline; }
         .lets-talk-btn {
             font-family: 'Telegraf', Arial, sans-serif;
             font-size: 22px;
+            order: -1; /* Move to the leftmost side */
             background: none;
             border: none;
             color: #4f8cff;
             cursor: pointer;
             font-weight: 700;
             transition: color 0.2s;
-            margin-left: auto;
+            margin-left: 0;
+            margin-right: auto;
         }
         .lets-talk-btn:hover {
             color: #1a5fd6;
             text-decoration: underline;
         }
-
         /* === INTRODUCTION SECTION === */
-
         .centered-intro {
             justify-content: center;
             align-items: center;
             text-align: center;
             gap: 48px;
         }
-
         .large-profile-img {
-            width: 180px;
-            height: 180px;
+            width: 380px;
+            height: 360px;
         }
-
         .centered-text-block {
             align-items: center;
             text-align: center;
         }
-
         .large-main-title {
             font-size: 48px;
             margin-bottom: 18px;
         }
-
         .large-subtitle {
             font-size: 24px;
             margin-bottom: 8px;
         }
-
-@media (max-width: 900px) {
-    .large-profile-img {
-        width: 140px;
-        height: 140px;
-    }
-    .large-main-title {
-        font-size: 36px;
-    }
-    .large-subtitle {
-        font-size: 18px;
-    }
-}
         .intro-flex {
             display: flex;
             align-items: center;
-            gap: 32px;
+            justify-content: center;
+            gap: 48px;
         }
-
-        
         .main-content.intro-section {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
             min-height: 100vh;
             padding-top: 120px;
-            padding-left: 54vw;
+            padding-left: 0;
             box-sizing: border-box;
             background: #fff;
             color: #000;
@@ -222,7 +180,6 @@
             color: #1a5fd6;
             text-decoration: underline;
         }
-
         /* === SYNTHSNIP SECTION === */
         .main-content.synthsnip-section {
             display: flex;
@@ -253,8 +210,6 @@
             text-align: center;
             color: #000;
         }
-
-        /* === SYNTHSNIP FLEX ROW === */
         .synthsnip-flex-row {
             display: flex;
             justify-content: space-between;
@@ -273,9 +228,6 @@
         }
         .synthsnip-col.who-we-are { max-width: 400px; }
         .what-we-do { text-align: right; }
-
-        /* === WHO/WHAT BLOCKS === */
-
         .who-main-title {
             font-size: 42px;
             font-family: 'Telegraf', Arial, sans-serif;
@@ -289,7 +241,7 @@
             font-weight: 700;
             margin-bottom: 10px;
             text-align: left;
-            letter-spacing: 0.327em;
+            letter-spacing: 0.32em;
             display: block;
             width: 100%;
             max-width: 100%;
@@ -302,8 +254,6 @@
             text-align: justify;
             line-height: 1.5;
         }
-
-        /* === SYNTHSNIP BOTTOM CTA === */
         .synthsnip-bottom-cta {
             width: 100vw;
             display: flex;
@@ -335,119 +285,141 @@
             cursor: pointer;
             transition: text-decoration 0.2s;
         }
-        .cta-link:hover {
-            text-decoration: underline;
-        }
-
+        .cta-link:hover { text-decoration: underline; }
         /* === DEVELOPER PORTFOLIO SECTION === */
-        .developer-portfolio-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            padding-top: 60px;
-            background: #fff;
-            color: #000;
-            width: 100vw;
-            box-sizing: border-box;
-            position: relative;
-        }
+
+        /* Add or update in your <style> section */
         .portfolio-title {
             font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 52px;
+            font-size: 32px;
             font-weight: 700;
-            text-align: center;
-            margin-bottom: 40px;
+            text-align: left;    /* Align text to the left */
+            margin-bottom: 0;
             margin-top: 0;
             letter-spacing: 1px;
         }
-        .portfolio-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-        .portfolio-project {
+
+        .portfolio-list {
+            width: 100%;
+            max-width: 100vw;
             display: flex;
             flex-direction: column;
+            gap: 0;
+            margin: 0 auto 0 auto;
+        }
+
+        .portfolio-item {
+            width: 100%;
+        }
+
+        .portfolio-row {
+            width: 100%;
+            display: flex;
             align-items: center;
-            width: 100%;
-            max-width: 320px;
-            min-width: 220px;
-            flex: 1 1 0;
-            position: relative;
-        }
-        .portfolio-btn {
-            font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 22px;
-            padding: 28px 0;
+            justify-content: space-between; /* Keep items spaced out */
+            background: none;
             border: none;
-            border-radius: 8px;
-            background: #4f8cff;
-            color: #fff;
-            font-weight: 600;
+            border-top: 2px solid #111;
+            border-bottom: 2px solid #111;
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 5vw;
+            font-weight: 400;
+            color: #111;
             cursor: pointer;
-            transition: background 0.2s, color 0.2s, transform 0.1s;
-            width: 100%;
-            min-width: 220px;
-            max-width: 100%;
-            box-sizing: border-box;
+            padding: 32px 0 32px 0;
+            margin: 0;
+            transition: background 0.15s;
+            outline: none;
+            text-align: center;    /* Align button text to the center */
         }
-        .portfolio-btn:hover {
-            background: #1a5fd6;
-            color: #fff;
-            transform: translateY(-2px) scale(1.04);
+
+        .portfolio-row:focus {
+            background: #f0f4fa;
         }
+
+        .portfolio-name {
+            flex: 1;
+            text-align: center;    /* Align project name to the center */
+            font-size: 4vw;
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .portfolio-plus {
+            font-size: 3vw;
+            font-weight: 400;
+            margin-right: 32px;
+            margin-left: 32px;
+            transition: transform 0.2s;
+        }
+
         .portfolio-dropdown {
             display: none;
             background: #f5f7fa;
             color: #222;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-            margin-top: 8px;
-            padding: 12px 16px 8px 16px;
-            font-size: 14px;
-            text-align: justify;
-            width: 100%;
-            min-height: 0;
+            font-size: 18px;
+            text-align: left;
+            padding: 24px 8vw 24px 8vw;
+            border-bottom: 2px solid #111;
             box-sizing: border-box;
-            transition: all 0.2s;
+            width: 100%;
+            max-width: 100vw;
         }
+
         .portfolio-dropdown.open {
             display: block;
         }
+
         .portfolio-dropdown ul {
-            padding-left: 18px;
             margin: 0;
-        }
-        .portfolio-dropdown li {
-            margin-bottom: 6px;
-            font-size: 13px;
-            text-align: justify;
+            padding-left: 24px;
         }
 
+        .portfolio-dropdown li {
+            margin-bottom: 12px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .portfolio-row {
+                font-size: 8vw;
+                padding: 22px 0 22px 0;
+            }
+            .portfolio-name {
+                font-size: 7vw;
+            }
+            .portfolio-plus {
+                font-size: 6vw;
+                margin-right: 18px;
+                margin-left: 18px;
+            }
+            .portfolio-dropdown {
+                font-size: 15px;
+                padding: 18px 4vw 18px 4vw;
+            }
+            .portfolio-dropdown li {
+                font-size: 15px;
+            }
+        }
         /* === GITHUB SECTION === */
         .github-portfolio-block {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
-            margin-top: auto;
-            margin-bottom: 32px;
             width: 100%;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            padding-bottom: 32px;
+            position: static; /* Fix: remove absolute positioning */
+            padding-bottom: 48px;
             background: transparent;
+            margin-top: 40px; /* Add space above for separation */
         }
         .github-portfolio-text {
             font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 22px;
+            font-size: 26px;
             color: #222;
-            margin-top: 18px;
+            margin-bottom: 18px;
             text-align: center;
         }
         .github-link {
@@ -455,19 +427,16 @@
             transition: transform 0.15s;
         }
         .github-link:hover .github-icon {
-            transform: scale(1.08);
+            transform: scale(1.12);
         }
         .github-icon {
-            width: 96px;
-            height: 96px;
+            width: 140px;
+            height: 140px;
             display: block;
         }
-
         body.dark-mode .github-portfolio-text {
             color: #f5f7fa;
         }
-
-        /* === RESPONSIVE DESIGN === */
         @media (max-width: 1100px) {
             .portfolio-buttons {
                 gap: 16px;
@@ -500,14 +469,72 @@
             }
             .who-main-title, .who-title { text-align: center; }
             .who-desc { text-align: justify; font-size: 16px; }
+            .github-portfolio-block {
+                position: static;
+                padding-bottom: 24px;
+                margin-top: 40px;
+            }
+        }
+        /* LET'S TALK SECTION */
+        .lets-talk-section {
+            margin-top: 200px;
+            padding: 60px 0;
+            background: #e6ecff;
+            width: 100vw;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lets-talk-title {
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 32px;
+            margin-top: 0;
+            width: 100%;
+        }
+
+        .lets-talk-desc {
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 22px;
+            width: 100vw;
+            max-width: 100vw;
+            margin-bottom: 32px;
+            text-align: center;
+            padding: 0 5vw;
+            box-sizing: border-box;
+        }
+
+        .lets-talk-contact {
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .lets-talk-section {
+                padding: 40px 0;
+            }
+            .lets-talk-title {
+                font-size: 24px;
+            }
+            .lets-talk-desc {
+                font-size: 16px;
+                padding: 0 2vw;
+            }
+            .lets-talk-contact {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- === TOP BAR === -->
     <div class="top-bar">
-        <a href="#synthsnip-section" class="about-title about-link">About SynthSnip</a>
         <button class="lets-talk-btn" onclick="document.getElementById('lets-talk').scrollIntoView({behavior:'smooth'})">Let's talk</button>
+        <a href="#synthsnip-section" class="about-title about-link">About SynthSnip</a>
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark mode">🌙</button>
     </div>
 
@@ -555,69 +582,85 @@
     </section>
 
     <!-- === DEVELOPER PORTFOLIO SECTION === -->
-    <section id="developer-portfolio" class="main-content developer-portfolio-section">
-        <div class="portfolio-title">Developer Portfolio</div>
-        <div class="portfolio-buttons">
-            <div class="portfolio-project">
-                <button class="portfolio-btn" onclick="toggleDropdown(this)">Banking App using Java</button>
-                <div class="portfolio-dropdown">
-                    <ul>
-                        <li>Developed a resilient console-based banking system using Java and MySQL, emphasizing secure user authentication, data integrity, and transaction reliability.</li>
-                        <li>Implemented encryption protocols and streamlined database connectivity via JDBC to ensure seamless backend operations.</li>
-                        <li>Applied object-oriented design principles to enhance system maintainability and scalability; utilized MySQL Workbench for efficient database administration and troubleshooting support.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="portfolio-project">
-                <button class="portfolio-btn" onclick="toggleDropdown(this)">2D Platformer using GameMaker Studio 2</button>
-                <div class="portfolio-dropdown">
-                    <ul>
-                        <li>Engineered a full-featured 2D platformer/shooter in GameMaker Studio 2, complete with fluid movement, enemy AI, and level progression.</li>
-                        <li>Architected a custom save system and modular shooting mechanics, including weapon logic, projectile physics, and cooldown balancing.</li>
-                        <li>Directed all aspects of gameplay design, asset integration, and UX refinement to deliver a cohesive and engaging player experience.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="portfolio-project">
-                <button class="portfolio-btn" onclick="toggleDropdown(this)">Weather App using Java</button>
-                <div class="portfolio-dropdown">
-                    <ul>
-                        <li>Engineered a weather application by integrating OpenWeatherMap and Geolocation APIs to deliver real-time, precise weather forecasts.</li>
-                        <li>Developed an intuitive Java Swing GUI focused on seamless user experience, enabling interactive data visualization.</li>
-                        <li>Implemented robust JSON parsing and error handling to efficiently process API responses and ensure accurate, responsive weather updates.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="portfolio-project">
-                <button class="portfolio-btn" onclick="toggleDropdown(this)">3D Survival Horror game using Unity</button>
-                <div class="portfolio-dropdown">
-                    <ul>
-                        <li>Integrated in-game analytics to track player behavior, progression patterns, and interaction data across multiple levels.</li>
-                        <li>Analyzed gameplay metrics to inform design iterations, balancing difficulty and improving user experience through data-driven decisions.</li>
-                        <li>Managed end-to-end development, incorporating structured testing, performance tuning, and technical documentation to support review and evaluation.</li>
-                    </ul>
-                </div>
+<section id="developer-portfolio" class="main-content developer-portfolio-section">
+    <div class="portfolio-title">Developer Portfolio</div>
+    <div style="height:5px;"></div>
+    <div class="portfolio-list">
+         <div class="portfolio-item">
+            <button class="portfolio-row" onclick="toggleDropdown(this)">
+                <span class="portfolio-name">Banking App using Java</span>
+                <span class="portfolio-plus">+</span>
+            </button>
+            <div class="portfolio-dropdown">
+                <ul>
+                    <li>Developed a resilient console-based banking system using Java and MySQL, emphasizing secure user authentication, data integrity, and transaction reliability.</li>
+                    <li>Implemented encryption protocols and streamlined database connectivity via JDBC to ensure seamless backend operations.</li>
+                    <li>Applied object-oriented design principles to enhance system maintainability and scalability; utilized MySQL Workbench for efficient database administration and troubleshooting support.</li>
+                </ul>
             </div>
         </div>
+        <div class="portfolio-item">
+            <button class="portfolio-row" onclick="toggleDropdown(this)">
+                <span class="portfolio-name">2D Platformer using GameMaker Studio 2</span>
+                <span class="portfolio-plus">+</span>
+            </button>
+            <div class="portfolio-dropdown">
+                <ul>
+                    <li>Engineered a full-featured 2D platformer/shooter in GameMaker Studio 2, complete with fluid movement, enemy AI, and level progression.</li>
+                    <li>Architected a custom save system and modular shooting mechanics, including weapon logic, projectile physics, and cooldown balancing.</li>
+                    <li>Directed all aspects of gameplay design, asset integration, and UX refinement to deliver a cohesive and engaging player experience.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="portfolio-item">
+            <button class="portfolio-row" onclick="toggleDropdown(this)">
+                <span class="portfolio-name">Weather App using Java</span>
+                <span class="portfolio-plus">+</span>
+            </button>
+            <div class="portfolio-dropdown">
+                <ul>
+                    <li>Engineered a weather application by integrating OpenWeatherMap and Geolocation APIs to deliver real-time, precise weather forecasts.</li>
+                    <li>Developed an intuitive Java Swing GUI focused on seamless user experience, enabling interactive data visualization.</li>
+                    <li>Implemented robust JSON parsing and error handling to efficiently process API responses and ensure accurate, responsive weather updates.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="portfolio-item">
+            <button class="portfolio-row" onclick="toggleDropdown(this)">
+                <span class="portfolio-name">3D Survival Horror game using Unity</span>
+                <span class="portfolio-plus">+</span>
+            </button>
+            <div class="portfolio-dropdown">
+                <ul>
+                    <li>Integrated in-game analytics to track player behavior, progression patterns, and interaction data across multiple levels.</li>
+                    <li>Analyzed gameplay metrics to inform design iterations, balancing difficulty and improving user experience through data-driven decisions.</li>
+                    <li>Managed end-to-end development, incorporating structured testing, performance tuning, and technical documentation to support review and evaluation.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
         <div class="github-portfolio-block">
-            <div class="github-portfolio-text">
-                Most of my projects can be found on
-            </div>
-            <a href="https://github.com/NathanHor22" target="_blank" class="github-link" aria-label="GitHub Profile">
-                <img src="images/github_mark.png" alt="GitHub" class="github-icon">
-            </a>
+        <div class="github-portfolio-text">
+            Most of my projects can be found on
         </div>
+        <a href="https://github.com/NathanHor22" target="_blank" class="github-link" aria-label="GitHub Profile">
+            <img src="images/github_mark.png" alt="GitHub" class="github-icon">
+        </a>
+    </div>
     </section>
 
     <!-- === LET'S TALK SECTION === -->
-    <section id="lets-talk" style="margin-top:200px; padding:60px; background:#e6ecff;">
-        <h2 style="font-family:'Telegraf',Arial,sans-serif; font-size:28px;">Let's Talk</h2>
-        <p style="font-family:'Telegraf',Arial,sans-serif; font-size:18px;">
+    <section id="lets-talk" class="lets-talk-section">
+        <h2 class="lets-talk-title">Let's Talk</h2>
+        <p class="lets-talk-desc">
+            Have questions or want to collaborate?<br>
+            We’d love to hear from you. Whether you're an educator, investor, or tech enthusiast, get in touch to learn more about our work at Syntech Solutions and how you can be part of the journey.
+        </p>
+        <p class="lets-talk-contact">
             Contact me at <a href="mailto:your@email.com">your@email.com</a>
         </p>
     </section>
 
-    <!-- === SCRIPTS === -->
     <script>
     // Theme toggle
     const toggleBtn = document.getElementById('theme-toggle');
@@ -644,6 +687,22 @@
         const dropdown = btn.nextElementSibling;
         dropdown.classList.toggle('open');
     }
+    function toggleDropdown(btn) {
+    const dropdown = btn.parentElement.querySelector('.portfolio-dropdown');
+    const plus = btn.querySelector('.portfolio-plus');
+    const isOpen = dropdown.classList.contains('open');
+    // Close all others
+    document.querySelectorAll('.portfolio-dropdown.open').forEach(d => {
+        d.classList.remove('open');
+        d.parentElement.querySelector('.portfolio-plus').textContent = '+';
+    });
+    // Toggle this one
+    if (!isOpen) {
+        dropdown.classList.add('open');
+        plus.textContent = '−';
+    } else {
+        dropdown.classList.remove('open');
+        plus.textContent = '+';
+    }
+}
     </script>
-</body>
-</html>
