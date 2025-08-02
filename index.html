@@ -294,8 +294,8 @@
             font-size: 32px;
             font-weight: 700;
             text-align: left;    /* Align text to the left */
-            margin-bottom: 0;
-            margin-top: 0;
+            margin-bottom: 22px;
+            margin-top: 22px;
             letter-spacing: 1px;
         }
 
@@ -528,6 +528,59 @@
                 font-size: 16px;
             }
         }
+
+        /* PHOTOGRAPHY SECTION */
+        .photography-section {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            min-height: 400px;
+            background: #fff;
+            padding: 60px 0 60px 0;
+            position: relative;
+        }
+
+        .photography-sideways-text {
+            writing-mode: vertical-lr; /* Change from vertical-rl to vertical-lr */
+            text-orientation: mixed;
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #111;
+            margin-left: 40px;
+            margin-right: 60px;
+            user-select: none;
+            white-space: pre-line;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .photography-content {
+            flex: 1;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Responsive for mobile */
+        @media (max-width: 900px) {
+            .photography-section {
+                flex-direction: column;
+                align-items: center;
+                padding: 32px 0 32px 0;
+            }
+            .photography-sideways-text {
+                writing-mode: horizontal-tb;
+                font-size: 28px;
+                margin: 0 0 24px 0;
+                text-align: center;
+            }
+            .photography-content {
+                padding-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -647,6 +700,16 @@
             <img src="images/github_mark.png" alt="GitHub" class="github-icon">
         </a>
     </div>
+    </section>
+
+        <section id="photography-section" class="main-content photography-section">
+        <div class="photography-sideways-text">
+            PHOTOGRAPHY PORTFOLIO
+        </div>
+        <div class="photography-content">
+            <!-- Add your photography portfolio content here -->
+            <p style="font-size:22px; color:#555;">Your photography portfolio goes here.</p>
+        </div>
     </section>
 
     <!-- === LET'S TALK SECTION === -->
