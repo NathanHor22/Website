@@ -619,6 +619,55 @@
             pointer-events: auto;
         }
 
+        #events-column {
+            position: relative;
+            z-index: 2;
+            flex: 1 1 0;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            cursor: pointer;
+            transition: none;
+            overflow: visible;
+        }
+
+        .events-gallery {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100vw;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            background: transparent;
+            z-index: 1;
+            pointer-events: none;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(.7,0,.3,1);
+            will-change: transform;
+        }
+
+        #events-column.expanded .events-gallery {
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        .events-gallery img {
+            height: 100%;
+            width: 20vw; /* 5 images, each 20vw to fill 100vw */
+            min-width: 0;
+            border-radius: 0;
+            margin: 0;
+            box-shadow: none;
+            object-fit: cover;
+            flex: 0 0 20vw;
+            transition: none;
+            pointer-events: auto;
+        }
+
         .photography-column {
             flex: 1 1 0;
             background-size: cover;
@@ -630,7 +679,7 @@
             cursor: pointer;
             transition: flex 0.4s cubic-bezier(.4,2,.6,1), filter 0.2s, transform 0.2s;
             filter: brightness(0.7);
-            overflow: hidden;
+            overflow: visible;
             z-index: 1;
         }
 
@@ -638,6 +687,10 @@
             filter: brightness(1) contrast(1.1);
             transform: scale(1.02);
             z-index: 1;
+        }
+
+                .photography-column.expanded {
+            z-index: 20;
         }
 
         .photography-column-title {
@@ -657,25 +710,79 @@
             pointer-events: none;
         }
 
+        .sports-gallery,
+        .events-gallery {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100vw;
+            flex-direction: row;
+            align-items: stretch;
+            background: transparent;
+            z-index: 10;
+            pointer-events: none;
+            transform: translateX(-100%);
+            opacity: 0;
+            transition:
+                transform 0.6s cubic-bezier(.7,0,.3,1),
+                opacity 0.3s cubic-bezier(.7,0,.3,1);
+            will-change: transform, opacity;
+        }
+
+        /* Show and animate only when expanded */
+        #sports-column.expanded .sports-gallery,
+        #events-column.expanded .events-gallery {
+            pointer-events: auto;
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Hide the gallery when not expanded */
+        #sports-column:not(.expanded) .sports-gallery,
+        #events-column:not(.expanded) .events-gallery {
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        /* Gallery images: 5 images, each 20vw wide */
+        .sports-gallery img,
+        .events-gallery img {
+            height: 100%;
+            width: 20vw;
+            min-width: 0;
+            border-radius: 0;
+            margin: 0;
+            box-shadow: none;
+            object-fit: cover;
+            flex: 0 0 20vw;
+            transition: none;
+            pointer-events: auto;
+        }
         /* Responsive */
         @media (max-width: 900px) {
-            .photography-columns {
-                flex-direction: column;
-                height: auto;
-                min-height: 0;
-            }
-            .photography-column {
-                min-height: 120px;
-                font-size: 18px;
-            }
-            .sports-gallery img {
+            .sports-gallery img,
+            .events-gallery img {
                 width: 100vw;
                 max-height: 180px;
                 flex: 0 0 100vw;
             }
-            .photography-column-title {
-                font-size: 3.5vw;
-                padding: 14px 0 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .sports-gallery img,
+            .events-gallery img {
+                width: 100vw;
+                max-height: 180px;
+                flex: 0 0 100vw;
+            }
+            .sports-gallery,
+            .events-gallery {
+                height: 40vw;
+                min-height: 120px;
             }
         }
     </style>
@@ -806,7 +913,6 @@
     <h2 class="photography-headline">PHOTOGRAPHY PORTFOLIO</h2>
     <div class="photography-columns" id="photography-columns">
         <div class="photography-column" id="sports-column" style="background-image:url('images/sports/_DSC0804.jpg')" onclick="expandSportsGallery()">
-            <div class="photography-column-title">Sports<br>Photography</div>
             <div class="sports-gallery" id="sports-gallery">
                 <img src="images/sports/_DSC6530.jpg" alt="Sports 1">
                 <img src="images/sports/_DSC0375.jpg" alt="Sports 2">
@@ -814,8 +920,16 @@
                 <img src="images/sports/_DSC6452.jpg" alt="Sports 4">
                 <img src="images/sports/_DSC9855ad.jpg" alt="Sports 5">
             </div>
+            <div class="photography-column-title">Sports<br>Photography</div>
         </div>
-        <div class="photography-column" style="background-image:url('images/events/_DSC1641.jpg')" onclick="showGallery('events')">
+        <div class="photography-column" id="events-column" style="background-image:url('images/events/_DSC1641.jpg')" onclick="expandEventsGallery()">
+            <div class="events-gallery" id="events-gallery">
+                <img src="images/events/_DSC1641.jpg" alt="Events 1">
+                <img src="images/events/_DSC1254.jpg" alt="Events 2">
+                <img src="images/events/_DSC0823.jpg" alt="Events 3">
+                <img src="images/events/_DSC7685.jpg" alt="Events 4">
+                <img src="images/events/_DSC9201.jpg" alt="Events 5">
+            </div>
             <div class="photography-column-title">Events<br>Photography</div>
         </div>
         <div class="photography-column" style="background-image:url('images/product/5934.jpg')" onclick="showGallery('product')">
@@ -886,20 +1000,44 @@
         plus.textContent = '+';
     }
 }
-    // Add this script after your existing script
+    // Only allow one expanded at a time
     function expandSportsGallery() {
         const sportsCol = document.getElementById('sports-column');
-        sportsCol.classList.toggle('expanded');
+        const eventsCol = document.getElementById('events-column');
+        if (!sportsCol.classList.contains('expanded')) {
+            sportsCol.classList.add('expanded');
+            eventsCol.classList.remove('expanded');
+        } else {
+            sportsCol.classList.remove('expanded');
+        }
+    }
+
+    function expandEventsGallery() {
+        const sportsCol = document.getElementById('sports-column');
+        const eventsCol = document.getElementById('events-column');
+        if (!eventsCol.classList.contains('expanded')) {
+            eventsCol.classList.add('expanded');
+            sportsCol.classList.remove('expanded');
+        } else {
+            eventsCol.classList.remove('expanded');
+        }
     }
 
     // Collapse when clicking outside
     document.addEventListener('click', function(e) {
         const sportsCol = document.getElementById('sports-column');
+        const eventsCol = document.getElementById('events-column');
         if (
             sportsCol.classList.contains('expanded') &&
             !sportsCol.contains(e.target)
         ) {
             sportsCol.classList.remove('expanded');
+        }
+        if (
+            eventsCol.classList.contains('expanded') &&
+            !eventsCol.contains(e.target)
+        ) {
+            eventsCol.classList.remove('expanded');
         }
     });
     </script>
