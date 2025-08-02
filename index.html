@@ -530,55 +530,96 @@
         }
 
         /* PHOTOGRAPHY SECTION */
-        .photography-section {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            min-height: 400px;
-            background: #fff;
-            padding: 60px 0 60px 0;
-            position: relative;
-        }
 
-        .photography-sideways-text {
-            writing-mode: vertical-lr; /* Change from vertical-rl to vertical-lr */
-            text-orientation: mixed;
+        .photography-headline {
+            width: 100%;
+            text-align: center;
+            color: #fff;
             font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 38px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            color: #111;
-            margin-left: 40px;
-            margin-right: 60px;
-            user-select: none;
-            white-space: pre-line;
-            line-height: 1.1;
-            text-align: left;
+            font-size: 5vw;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 64px 0 36px 0;
+            z-index: 2;
+            position: relative;
+            text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .photography-content {
-            flex: 1;
-            padding-left: 0;
+        .photography-section {
+            position: center;
+            width: 100vw;
+            min-height: 60vh;
+            padding: 0;
+            margin: 0;
+            background: #000;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: stretch;
         }
 
-        /* Responsive for mobile */
+        .photography-columns {
+            display: flex;
+            width: 100vw;
+            height: 60vh;
+            min-height: 400px;
+        }
+
+        .photography-column {
+            flex: 1 1 0;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            cursor: pointer;
+            transition: filter 0.2s, transform 0.2s;
+            filter: brightness(0.7);
+        }
+        .photography-column:hover {
+            filter: brightness(1) contrast(1.1);
+            transform: scale(1.02);
+            z-index: 1;
+        }
+
+        .photography-column-title {
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 1.3vw;
+            font-weight: 600;
+            text-align: center;
+            padding: 24px 0 18px 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            letter-spacing: 0.01em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
         @media (max-width: 900px) {
-            .photography-section {
+            .photography-columns {
                 flex-direction: column;
-                align-items: center;
-                padding: 32px 0 32px 0;
+                height: auto;
+                min-height: 0;
             }
-            .photography-sideways-text {
-                writing-mode: horizontal-tb;
-                font-size: 28px;
-                margin: 0 0 24px 0;
-                text-align: center;
+            .photography-column {
+                min-height: 120px;
+                font-size: 18px;
             }
-            .photography-content {
-                padding-left: 0;
+            .photography-overlay-title {
+                font-size: 7vw;
+            }
+            .photography-column-title {
+                font-size: 3.5vw;
+                padding: 14px 0 10px 0;
             }
         }
     </style>
@@ -603,7 +644,9 @@
                 <div class="subtitle large-subtitle">
                     <a href="#developer-portfolio" class="founder-link">Java & Unity Developer</a>
                 </div>
-                <div class="subtitle large-subtitle">Photographer & Videographer</div>
+                <div class="subtitle large-subtitle">
+                    <a href="#photography-section" class="founder-link">Photographer & Videographer</a>
+                </div>
             </div>
         </div>
     </div>
@@ -702,13 +745,25 @@
     </div>
     </section>
 
-        <section id="photography-section" class="main-content photography-section">
-        <div class="photography-sideways-text">
-            PHOTOGRAPHY PORTFOLIO
-        </div>
-        <div class="photography-content">
-            <!-- Add your photography portfolio content here -->
-            <p style="font-size:22px; color:#555;">Your photography portfolio goes here.</p>
+    <!-- === PHOTOGRAPHY SECTION === -->
+    <section id="photography-section" class="main-content photography-section">
+        <h2 class="photography-headline">PHOTOGRAPHY PORTFOLIO</h2>
+        <div class="photography-columns">
+            <div class="photography-column" style="background-image:url('images/sports/_DSC0804.jpg')" onclick="showGallery('sports')">
+                <div class="photography-column-title">Sports<br>Photography</div>
+            </div>
+            <div class="photography-column" style="background-image:url('images/events/_DSC1641.jpg')" onclick="showGallery('events')">
+                <div class="photography-column-title">Events<br>Photography</div>
+            </div>
+            <div class="photography-column" style="background-image:url('images/product/5934.jpg')" onclick="showGallery('product')">
+                <div class="photography-column-title">Product<br>Photography</div>
+            </div>
+            <div class="photography-column" style="background-image:url('images/graphicposter/Poster ver 2.png')" onclick="showGallery('graphic_posters')">
+                <div class="photography-column-title">Graphic<br>Posters</div>
+            </div>
+            <div class="photography-column" style="background-image:url('images/street/_DSC8703.jpg')" onclick="showGallery('street')">
+                <div class="photography-column-title">Street<br>Photography</div>
+            </div>
         </div>
     </section>
 
@@ -768,4 +823,23 @@
         plus.textContent = '+';
     }
 }
+    // Add this script after your existing script
+    function togglePhotoDropdown(btn) {
+        const dropdown = btn.parentElement.querySelector('.photo-portfolio-dropdown');
+        const plus = btn.querySelector('.photo-portfolio-plus');
+        const isOpen = dropdown.classList.contains('open');
+        // Close all others
+        document.querySelectorAll('.photo-portfolio-dropdown.open').forEach(d => {
+            d.classList.remove('open');
+            d.parentElement.querySelector('.photo-portfolio-plus').textContent = '+';
+        });
+        // Toggle this one
+        if (!isOpen) {
+            dropdown.classList.add('open');
+            plus.textContent = '−';
+        } else {
+            dropdown.classList.remove('open');
+            plus.textContent = '+';
+        }
+    }
     </script>
