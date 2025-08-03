@@ -79,14 +79,7 @@
             align-items: center;
             text-align: center;
         }
-        .large-main-title {
-            font-size: 48px;
-            margin-bottom: 18px;
-        }
-        .large-subtitle {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
+
         .intro-flex {
             display: flex;
             align-items: center;
@@ -108,17 +101,20 @@
         }
         .main-title {
             font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 36px;
+            font-size: 84px; 
             font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+            margin-bottom: 18px;
+            letter-spacing: 6px;
+            text-align: center;
         }
         .subtitle {
             font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 17px;
-            margin: 0 0 5px 0;
-            font-weight: 400;
-            letter-spacing: 1px;
+            font-size: 64px; 
+            margin-bottom: 8px;
+            text-align: justify;
+            width: 100%;
+            display: block;
+            letter-spacing: 3px;
         }
         .founder-link {
             color: #4f8cff;
@@ -439,7 +435,7 @@
             align-items: center;
             justify-content: flex-start;
             box-sizing: border-box;
-            padding: 60px 0;
+            padding: 60px 0 20px 0;
         }
         .photography-content {
             display: flex;
@@ -500,14 +496,17 @@
             gap: 16px;
             cursor: pointer;
             border: 2px solid transparent;
-            transition: border 0.2s, box-shadow 0.2s;
+            transition: border 0.2s, box-shadow 0.2s, transform 0.22s cubic-bezier(.4,1.4,.6,1), filter 0.22s cubic-bezier(.4,1.4,.6,1);
             overflow: hidden;
             position: relative;
         }
         .photography-card.selected,
         .photography-card:hover {
-            border: 2px solid #e6c97b;
-            box-shadow: 0 4px 24px rgba(79,140,255,0.10);
+            transform: scale(1.08);
+            filter: brightness(1.18);
+            z-index: 2;
+            border: 2.5px solid #ffe07b;
+            box-shadow: 0 8px 32px rgba(79,140,255,0.18);
         }
         .photography-card img {
             width: 138px;
@@ -551,6 +550,40 @@
                 max-width: 40%; /* 2 per row on mobile */
             }
         }
+
+        /* INSTAGRAM BLOCK SECTION */
+        .instagram-portfolio-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+            padding-bottom: 0px;
+            background: transparent;
+            margin-top: 32px;
+        }
+        .instagram-portfolio-text {
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 26px;
+            color: #222;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .instagram-link {
+            display: inline-block;
+            transition: transform 0.15s;
+        }
+        .instagram-link:hover .instagram-icon {
+            transform: scale(1.12);
+        }
+        .instagram-icon {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin-bottom: 0;    /* Ensure no margin below the icon */
+            padding-bottom: 0;   /* Ensure no padding below the icon */
+        }
+
 
         /* LET'S TALK SECTION */
         .lets-talk-section {
@@ -750,6 +783,15 @@
                     </div>
                 </div>
             </div>
+    <!-- Instagram block -->
+            <div class="instagram-portfolio-block">
+                <div class="instagram-portfolio-text">
+                    Explore my full portfolio on
+                </div>
+                <a href="https://instagram.com/nathanhor22" target="_blank" class="instagram-link" aria-label="Instagram Profile">
+                    <img src="images/instagramicon.png" alt="Instagram" class="instagram-icon">
+                </a>
+            </div>
         </section>
 
     <!-- === LET'S TALK SECTION === -->
@@ -760,7 +802,7 @@
             We’d love to hear from you. Whether you're an educator, investor, or tech enthusiast, get in touch to learn more about our work at Syntech Solutions and how you can be part of the journey.
         </p>
         <p class="lets-talk-contact">
-            Contact me at <a href="mailto:your@email.com">your@email.com</a>
+            Contact me at <a href="mailto:nathanhor2001@email.com">nathanhor2001@email.com</a>
         </p>
     </section>
 
@@ -795,7 +837,7 @@
                 "images/sports/sports1.jpg",
                 "images/sports/sports2.jpg",
                 "images/sports/sports3.jpg",
-                "images/sports/sports6.jpg",
+                "images/sports/sports0.jpg",
                 "images/sports/sports5.jpg",
                 "images/sports/sports7.jpg",
             ],
@@ -851,6 +893,9 @@
             });
         });
 
+
 // Initial render
 renderGallery('sports');
+
+
     </script>
