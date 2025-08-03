@@ -506,11 +506,22 @@
             min-width: 0;
             width: 100%;
             height: 100%;
+            transition: opacity 0.5s;
+            opacity: 1;
         }
+
+        .photography-gallery.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .photography-gallery.fade-in {
+            opacity: 1;
+        }
+        
         .photography-gallery img {
             display: block;
             height: auto;
-            max-width: 33.33%; /* 3 images per row on large screens */
+            max-width: 26.66%; /* 3 images per row on large screens */
             width: auto;
             flex: 1 1 auto;
             object-fit: contain;
@@ -519,7 +530,7 @@
             margin: 0;
         }
         .photography-cards {
-            width: 260px;
+            width: 312px;
             display: flex;
             flex-direction: column;
             gap: 22px;
@@ -528,7 +539,7 @@
         }
         .photography-card {
             width: 100%;
-            height: 110px;
+            height: 132px;
             background: #23272a;
             border-radius: 14px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.10);
@@ -547,7 +558,7 @@
             box-shadow: 0 4px 24px rgba(79,140,255,0.10);
         }
         .photography-card img {
-            width: 90px;
+            width: 138px;
             height: 100%;
             object-fit: cover;
             border-radius: 10px 0 0 10px;
@@ -574,18 +585,18 @@
                 align-items: flex-start;
             }
             .photography-card {
-                width: 110px;
-                height: 90px;
+                width: 152px;
+                height: 108px;
                 flex-direction: column;
                 gap: 6px;
             }
             .photography-card img {
                 width: 100%;
-                height: 60px;
+                height: 72px;
                 border-radius: 10px 10px 0 0;
             }
             .photography-gallery img {
-                max-width: 50%; /* 2 per row on mobile */
+                max-width: 40%; /* 2 per row on mobile */
             }
         }
 
@@ -848,51 +859,66 @@
 }
 
     // Photography gallery
-const photoCategories = {
-    sports: [
-        "images/sports/sports1.jpg",
-        "images/sports/sports2.jpg",
-        "images/sports/sports3.jpg",
-        "images/sports/sports6.jpg",
-        "images/sports/sports5.jpg",
-        "images/sports/sports7.jpg",
-    ],
-    events: [
-        "images/events/events1.jpg",
-        "images/events/events2.jpg",
-        "images/events/events6.jpg",
-        "images/events/events3.jpg",
-        "images/events/events4.jpg",
-        "images/events/events5.jpg",
-    ],
-    posters: [
-        "images/graphicposter/posters1.png",
-        "images/graphicposter/posters7.png",
-        "images/graphicposter/posters2.png",
-        "images/graphicposter/posters3.png",
-        "images/graphicposter/posters4.png",
-        "images/graphicposter/posters5.png",
-        "images/graphicposter/posters6.png",
-    ]
-};
+        const photoCategories = {
+            sports: [
+                "images/sports/sports1.jpg",
+                "images/sports/sports2.jpg",
+                "images/sports/sports3.jpg",
+                "images/sports/sports6.jpg",
+                "images/sports/sports5.jpg",
+                "images/sports/sports7.jpg",
+            ],
+            events: [
+                "images/events/events1.jpg",
+                "images/events/events2.jpg",
+                "images/events/events6.jpg",
+                "images/events/events3.jpg",
+                "images/events/events4.jpg",
+                "images/events/events5.jpg",
+                "images/events/events7.jpg",
+                "images/events/events8.jpg",
+                "images/events/events9.jpg",
+            ],
+            posters: [
+                "images/graphicposter/posters5.png",
+                "images/graphicposter/posters4.png",
+                "images/graphicposter/posters2.png",
+                "images/graphicposter/posters6.png",
+                "images/graphicposter/posters7.png",
+                "images/graphicposter/posters3.png",
+                
+                
+            ]
+        };
 
-function renderGallery(category) {
-    const gallery = document.getElementById('photography-gallery');
-    gallery.innerHTML = '';
-    photoCategories[category].forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        gallery.appendChild(img);
-    });
-}
+        function renderGallery(category) {
+            const gallery = document.getElementById('photography-gallery');
+            // Fade out
+            gallery.classList.add('fade-out');
+            setTimeout(() => {
+                gallery.innerHTML = '';
+                photoCategories[category].forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    gallery.appendChild(img);
+                });
+                // Fade in
+                gallery.classList.remove('fade-out');
+                gallery.classList.add('fade-in');
+                setTimeout(() => {
+                    gallery.classList.remove('fade-in');
+                }, 500);
+            }, 400);
+        }
 
-document.querySelectorAll('.photography-card').forEach(card => {
-    card.addEventListener('click', function() {
-        document.querySelectorAll('.photography-card').forEach(c => c.classList.remove('selected'));
-        this.classList.add('selected');
-        renderGallery(this.dataset.category);
-    });
-});
+        document.querySelectorAll('.photography-card').forEach(card => {
+            card.addEventListener('click', function() {
+                if (this.classList.contains('selected')) return;
+                document.querySelectorAll('.photography-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                renderGallery(this.dataset.category);
+            });
+        });
 
 // Initial render
 renderGallery('sports');
