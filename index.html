@@ -599,11 +599,22 @@
 
         .lets-talk-title {
             font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 32px;
-            text-align: center;
+            font-size: 48px;
+            text-align: left;
             margin-bottom: 32px;
             margin-top: 0;
             width: 100%;
+            font-weight: 700;
+            padding-left: 5vw;   /* Add left padding */
+            box-sizing: border-box;
+        }
+        .lets-talk-highlight {
+            font-size: 28px;         /* Bigger font for highlight */
+            font-weight: 700;        /* Bold */
+            text-align: left;
+            display: block;
+            margin-bottom: 12px;
+            font-family: 'Telegraf', Arial, sans-serif;
         }
 
         .lets-talk-desc {
@@ -612,7 +623,7 @@
             width: 100vw;
             max-width: 100vw;
             margin-bottom: 32px;
-            text-align: center;
+            text-align: left;        /* Align to the left */
             padding: 0 5vw;
             box-sizing: border-box;
         }
@@ -620,7 +631,16 @@
         .lets-talk-contact {
             font-family: 'Telegraf', Arial, sans-serif;
             font-size: 18px;
-            text-align: center;
+            text-align: left;        /* Align to the left */
+            padding: 0 5vw;
+            box-sizing: border-box;
+        }
+
+        .lets-talk-highlight,
+        .lets-talk-desc,
+        .lets-talk-contact {
+            padding-left: 5vw;   /* Keep left alignment consistent */
+            box-sizing: border-box;
         }
 
         @media (max-width: 900px) {
@@ -797,12 +817,12 @@
     <!-- === LET'S TALK SECTION === -->
     <section id="lets-talk" class="lets-talk-section">
         <h2 class="lets-talk-title">Let's Talk</h2>
+        <span class="lets-talk-highlight">Have questions or want to collaborate?</span>
         <p class="lets-talk-desc">
-            Have questions or want to collaborate?<br>
             We’d love to hear from you. Whether you're an educator, investor, or tech enthusiast, get in touch to learn more about our work at Syntech Solutions and how you can be part of the journey.
         </p>
         <p class="lets-talk-contact">
-            Contact me at <a href="mailto:nathanhor2001@email.com">nathanhor2001@email.com</a>
+            Contact me at: <a href="mailto:nathanhor2001@email.com">nathanhor2001@email.com</a>
         </p>
     </section>
 
