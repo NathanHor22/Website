@@ -288,7 +288,6 @@
         .cta-link:hover { text-decoration: underline; }
         /* === DEVELOPER PORTFOLIO SECTION === */
 
-        /* Add or update in your <style> section */
         .portfolio-title {
             font-family: 'Telegraf', Arial, sans-serif;
             font-size: 32px;
@@ -475,6 +474,121 @@
                 margin-top: 40px;
             }
         }
+
+
+
+        /* === PHOTOGRAPHY PORTFOLIO SECTION === */
+        .photography-portfolio-section {
+            width: 100vw;
+            min-height: 100vh;
+            background: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            box-sizing: border-box;
+            padding: 60px 0;
+        }
+        .photography-content {
+            display: flex;
+            width: 80vw;
+            max-width: 1400px;
+            min-height: 500px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+        .photography-gallery {
+            flex: 1 1 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            align-items: flex-start;
+            min-width: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .photography-gallery img {
+            display: block;
+            height: auto;
+            max-width: 33.33%; /* 3 images per row on large screens */
+            width: auto;
+            flex: 1 1 auto;
+            object-fit: contain;
+            border-radius: 0;
+            box-shadow: none;
+            margin: 0;
+        }
+        .photography-cards {
+            width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .photography-card {
+            width: 100%;
+            height: 110px;
+            background: #23272a;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.2s, box-shadow 0.2s;
+            overflow: hidden;
+            position: relative;
+        }
+        .photography-card.selected,
+        .photography-card:hover {
+            border: 2px solid #e6c97b;
+            box-shadow: 0 4px 24px rgba(79,140,255,0.10);
+        }
+        .photography-card img {
+            width: 90px;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px 0 0 10px;
+        }
+        .photography-card-title {
+            color: #fff;
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        @media (max-width: 900px) {
+            .photography-content {
+                flex-direction: column;
+                width: 98vw;
+                gap: 24px;
+            }
+            .photography-cards {
+                flex-direction: row;
+                width: 100%;
+                gap: 12px;
+                justify-content: center;
+                align-items: flex-start;
+            }
+            .photography-card {
+                width: 110px;
+                height: 90px;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .photography-card img {
+                width: 100%;
+                height: 60px;
+                border-radius: 10px 10px 0 0;
+            }
+            .photography-gallery img {
+                max-width: 50%; /* 2 per row on mobile */
+            }
+        }
+
         /* LET'S TALK SECTION */
         .lets-talk-section {
             margin-top: 200px;
@@ -529,262 +643,7 @@
             }
         }
 
-        /* PHOTOGRAPHY SECTION */
 
-        .photography-section {
-            width: 100vw;
-            min-height: 60vh;
-            padding: 0;
-            margin: 0;
-            background: #000;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-        }
-
-        .photography-headline {
-            width: 100%;
-            text-align: center;
-            color: #fff;
-            font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 5vw;
-            font-weight: 900;
-            letter-spacing: 0.05em;
-            margin: 0;
-            padding: 64px 0 36px 0;
-            z-index: 2;
-            position: relative;
-            text-shadow: 0 4px 24px rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .photography-columns {
-            display: flex;
-            width: 100vw;
-            height: 60vh;
-            min-height: 400px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #sports-column {
-            position: relative;
-            z-index: 2;
-            flex: 1 1 0;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            cursor: pointer;
-            transition: none;
-            overflow: visible;
-        }
-
-        .sports-gallery {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100vw;
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-            background: transparent;
-            z-index: 1;
-            pointer-events: none;
-            transform: translateX(-100%);
-            transition: transform 0.5s cubic-bezier(.7,0,.3,1);
-            will-change: transform;
-        }
-
-        #sports-column.expanded .sports-gallery {
-            transform: translateX(0);
-            pointer-events: auto;
-        }
-
-        .sports-gallery img {
-            height: 100%;
-            width: 20vw; /* 5 images, each 20vw to fill 100vw */
-            min-width: 0;
-            border-radius: 0;
-            margin: 0;
-            box-shadow: none;
-            object-fit: cover;
-            flex: 0 0 20vw;
-            transition: none;
-            pointer-events: auto;
-        }
-
-        #events-column {
-            position: relative;
-            z-index: 2;
-            flex: 1 1 0;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            cursor: pointer;
-            transition: none;
-            overflow: visible;
-        }
-
-        .events-gallery {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100vw;
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-            background: transparent;
-            z-index: 1;
-            pointer-events: none;
-            transform: translateX(-100%);
-            transition: transform 0.5s cubic-bezier(.7,0,.3,1);
-            will-change: transform;
-        }
-
-        #events-column.expanded .events-gallery {
-            transform: translateX(0);
-            pointer-events: auto;
-        }
-
-        .events-gallery img {
-            height: 100%;
-            width: 20vw; /* 5 images, each 20vw to fill 100vw */
-            min-width: 0;
-            border-radius: 0;
-            margin: 0;
-            box-shadow: none;
-            object-fit: cover;
-            flex: 0 0 20vw;
-            transition: none;
-            pointer-events: auto;
-        }
-
-        .photography-column {
-            flex: 1 1 0;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            cursor: pointer;
-            transition: flex 0.4s cubic-bezier(.4,2,.6,1), filter 0.2s, transform 0.2s;
-            filter: brightness(0.7);
-            overflow: visible;
-            z-index: 1;
-        }
-
-        .photography-column:hover {
-            filter: brightness(1) contrast(1.1);
-            transform: scale(1.02);
-            z-index: 1;
-        }
-
-                .photography-column.expanded {
-            z-index: 20;
-        }
-
-        .photography-column-title {
-            width: 100%;
-            background: rgba(0,0,0,0.5);
-            color: #fff;
-            font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 1.3vw;
-            font-weight: 600;
-            text-align: center;
-            padding: 24px 0 18px 0;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            letter-spacing: 0.01em;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            pointer-events: none;
-        }
-
-        .sports-gallery,
-        .events-gallery {
-            display: flex;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100vw;
-            flex-direction: row;
-            align-items: stretch;
-            background: transparent;
-            z-index: 10;
-            pointer-events: none;
-            transform: translateX(-100%);
-            opacity: 0;
-            transition:
-                transform 0.6s cubic-bezier(.7,0,.3,1),
-                opacity 0.3s cubic-bezier(.7,0,.3,1);
-            will-change: transform, opacity;
-        }
-
-        /* Show and animate only when expanded */
-        #sports-column.expanded .sports-gallery,
-        #events-column.expanded .events-gallery {
-            pointer-events: auto;
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        /* Hide the gallery when not expanded */
-        #sports-column:not(.expanded) .sports-gallery,
-        #events-column:not(.expanded) .events-gallery {
-            pointer-events: none;
-            opacity: 0;
-            transform: translateX(-100%);
-        }
-
-        /* Gallery images: 5 images, each 20vw wide */
-        .sports-gallery img,
-        .events-gallery img {
-            height: 100%;
-            width: 20vw;
-            min-width: 0;
-            border-radius: 0;
-            margin: 0;
-            box-shadow: none;
-            object-fit: cover;
-            flex: 0 0 20vw;
-            transition: none;
-            pointer-events: auto;
-        }
-        /* Responsive */
-        @media (max-width: 900px) {
-            .sports-gallery img,
-            .events-gallery img {
-                width: 100vw;
-                max-height: 180px;
-                flex: 0 0 100vw;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .sports-gallery img,
-            .events-gallery img {
-                width: 100vw;
-                max-height: 180px;
-                flex: 0 0 100vw;
-            }
-            .sports-gallery,
-            .events-gallery {
-                height: 40vw;
-                min-height: 120px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -907,42 +766,29 @@
         </a>
     </div>
     </section>
-
-    <!-- === PHOTOGRAPHY SECTION === -->
-<section id="photography-section" class="main-content photography-section">
-    <h2 class="photography-headline">PHOTOGRAPHY PORTFOLIO</h2>
-    <div class="photography-columns" id="photography-columns">
-        <div class="photography-column" id="sports-column" style="background-image:url('images/sports/_DSC0804.jpg')" onclick="expandSportsGallery()">
-            <div class="sports-gallery" id="sports-gallery">
-                <img src="images/sports/_DSC6530.jpg" alt="Sports 1">
-                <img src="images/sports/_DSC0375.jpg" alt="Sports 2">
-                <img src="images/sports/_DSC1910.jpg" alt="Sports 3">
-                <img src="images/sports/_DSC6452.jpg" alt="Sports 4">
-                <img src="images/sports/_DSC9855ad.jpg" alt="Sports 5">
+        <!-- === PHOTOGRAPHY PORTFOLIO SECTION === -->
+        <section id="photography-portfolio" class="main-content photography-portfolio-section">
+            <div class="portfolio-title">Photography Portfolio</div>
+            <div class="photography-content">
+                <div class="photography-gallery" id="photography-gallery">
+                    <!-- Images will be injected by JS -->
+                </div>
+                <div class="photography-cards">
+                    <div class="photography-card selected" data-category="sports">
+                        <img src="images/sports/sports1.jpg" alt="Sports" />
+                        <div class="photography-card-title">Sports</div>
+                    </div>
+                    <div class="photography-card" data-category="events">
+                        <img src="images/events/events1.jpg" alt="Events" />
+                        <div class="photography-card-title">Events</div>
+                    </div>
+                    <div class="photography-card" data-category="posters">
+                        <img src="images/graphicposter/posters1.png" alt="Posters" />
+                        <div class="photography-card-title">Posters</div>
+                    </div>
+                </div>
             </div>
-            <div class="photography-column-title">Sports<br>Photography</div>
-        </div>
-        <div class="photography-column" id="events-column" style="background-image:url('images/events/_DSC1641.jpg')" onclick="expandEventsGallery()">
-            <div class="events-gallery" id="events-gallery">
-                <img src="images/events/_DSC1641.jpg" alt="Events 1">
-                <img src="images/events/_DSC1254.jpg" alt="Events 2">
-                <img src="images/events/_DSC0823.jpg" alt="Events 3">
-                <img src="images/events/_DSC7685.jpg" alt="Events 4">
-                <img src="images/events/_DSC9201.jpg" alt="Events 5">
-            </div>
-            <div class="photography-column-title">Events<br>Photography</div>
-        </div>
-        <div class="photography-column" style="background-image:url('images/product/5934.jpg')" onclick="showGallery('product')">
-            <div class="photography-column-title">Product<br>Photography</div>
-        </div>
-        <div class="photography-column" style="background-image:url('images/graphicposter/Poster ver 2.png')" onclick="showGallery('graphic_posters')">
-            <div class="photography-column-title">Graphic<br>Posters</div>
-        </div>
-        <div class="photography-column" style="background-image:url('images/street/_DSC8703.jpg')" onclick="showGallery('street')">
-            <div class="photography-column-title">Street<br>Photography</div>
-        </div>
-    </div>
-</section>
+        </section>
 
     <!-- === LET'S TALK SECTION === -->
     <section id="lets-talk" class="lets-talk-section">
@@ -1000,44 +846,54 @@
         plus.textContent = '+';
     }
 }
-    // Only allow one expanded at a time
-    function expandSportsGallery() {
-        const sportsCol = document.getElementById('sports-column');
-        const eventsCol = document.getElementById('events-column');
-        if (!sportsCol.classList.contains('expanded')) {
-            sportsCol.classList.add('expanded');
-            eventsCol.classList.remove('expanded');
-        } else {
-            sportsCol.classList.remove('expanded');
-        }
-    }
 
-    function expandEventsGallery() {
-        const sportsCol = document.getElementById('sports-column');
-        const eventsCol = document.getElementById('events-column');
-        if (!eventsCol.classList.contains('expanded')) {
-            eventsCol.classList.add('expanded');
-            sportsCol.classList.remove('expanded');
-        } else {
-            eventsCol.classList.remove('expanded');
-        }
-    }
+    // Photography gallery
+const photoCategories = {
+    sports: [
+        "images/sports/sports1.jpg",
+        "images/sports/sports2.jpg",
+        "images/sports/sports3.jpg",
+        "images/sports/sports6.jpg",
+        "images/sports/sports5.jpg",
+        "images/sports/sports7.jpg",
+    ],
+    events: [
+        "images/events/events1.jpg",
+        "images/events/events2.jpg",
+        "images/events/events6.jpg",
+        "images/events/events3.jpg",
+        "images/events/events4.jpg",
+        "images/events/events5.jpg",
+    ],
+    posters: [
+        "images/graphicposter/posters1.png",
+        "images/graphicposter/posters7.png",
+        "images/graphicposter/posters2.png",
+        "images/graphicposter/posters3.png",
+        "images/graphicposter/posters4.png",
+        "images/graphicposter/posters5.png",
+        "images/graphicposter/posters6.png",
+    ]
+};
 
-    // Collapse when clicking outside
-    document.addEventListener('click', function(e) {
-        const sportsCol = document.getElementById('sports-column');
-        const eventsCol = document.getElementById('events-column');
-        if (
-            sportsCol.classList.contains('expanded') &&
-            !sportsCol.contains(e.target)
-        ) {
-            sportsCol.classList.remove('expanded');
-        }
-        if (
-            eventsCol.classList.contains('expanded') &&
-            !eventsCol.contains(e.target)
-        ) {
-            eventsCol.classList.remove('expanded');
-        }
+function renderGallery(category) {
+    const gallery = document.getElementById('photography-gallery');
+    gallery.innerHTML = '';
+    photoCategories[category].forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        gallery.appendChild(img);
     });
+}
+
+document.querySelectorAll('.photography-card').forEach(card => {
+    card.addEventListener('click', function() {
+        document.querySelectorAll('.photography-card').forEach(c => c.classList.remove('selected'));
+        this.classList.add('selected');
+        renderGallery(this.dataset.category);
+    });
+});
+
+// Initial render
+renderGallery('sports');
     </script>
