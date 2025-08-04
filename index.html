@@ -94,19 +94,101 @@
             }
         }
         /* === INTRODUCTION SECTION === */
+        .intro-3col-flex {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 40px 0 0 0;
+        }
+
+        .intro-about {
+            flex: 1 1 0;
+            max-width: 370px;
+            min-width: 220px;
+            text-align: left;
+        }
+        .about-title-main {
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 0.2em;
+        }
+        .about-desc {
+            font-size: 1.3rem;
+            font-family: 'Telegraf', Arial, sans-serif;
+            margin-top: 0.5em;
+            line-height: 1.25;
+            text-align: left;
+            padding-left: 0.2em;
+        }
+        .custom-intro-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+            max-width: 1200px;
+            min-height: 420px;
+            gap: 0;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .intro-left-space {
+            flex: 1 1 0;
+            min-width: 120px;
+            height: 100%;
+            /* Optionally add a border or background for reference */
+        }
+
+        .right-intro-text {
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            min-width: 220px;
+            max-width: 370px;
+            gap: 0.2em;
+        }
+
+        .left-intro-text {
+            align-items: flex-end;
+            text-align: right;
+            max-width: 420px;
+            min-width: 220px;
+            gap: 0.2em;
+        }
+
+        .intro-profile-img-wrapper {
+            flex: 1 1 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .centered-intro {
             justify-content: center;
             align-items: center;
             text-align: center;
             gap: 48px;
         }
+
         .large-profile-img {
-            width: 320px;
-            height: 320px;
-            max-width: 80vw;
-            max-height: 80vw;
+            width: 370px;
+            height: 370px;
+            max-width: 32vw;
+            max-height: 32vw;
             object-fit: cover;
-            border-radius: 16px;
+            border-radius: 32px;
+            display: block;
+            margin: 0;
         }
 
         .centered-text-block {
@@ -124,6 +206,34 @@
             max-width: 1100px;
             box-sizing: border-box;
             padding: 0 32px;
+        }
+        .left-intro-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            max-width: 420px;
+            min-width: 220px;
+            flex: 1 1 0;
+            gap: 0.2em;
+        }
+        .intro-hi {
+            font-size: 1.3rem;
+            margin-bottom: 0.1em;
+            font-family: 'Telegraf', Arial, sans-serif;
+        }
+
+        .intro-iam {
+            font-size: 1.2rem;
+            margin-bottom: 0.1em;
+            font-family: 'Telegraf', Arial, sans-serif;
+        }
+        .intro-role {
+            font-size: 1.15rem;
+            font-family: 'Telegraf', Arial, sans-serif;
+            margin-bottom: 0.6em;
+            font-weight: 400;
+            letter-spacing: 0.08em;
         }
 
         .main-content.intro-section {
@@ -159,16 +269,23 @@
             letter-spacing: 3px;
         }
         .founder-link {
-            color: #4f8cff;
+            color: #111;
             text-decoration: none;
-            cursor: pointer;
             font-family: 'Telegraf', Arial, sans-serif;
-            font-size: 17px;
-            transition: color 0.2s;
+            font-size: 1.15rem;
+            font-weight: 400;
+            transition: filter 0.18s, color 0.18s;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 0.1em;
         }
-        .founder-link:hover {
+
+
+        .founder-link:hover, .founder-link:focus {
+            filter: brightness(1.5);
             color: #1a5fd6;
-            text-decoration: underline;
+            text-decoration: none;
+            outline: none;
         }
 
         .intro-text-block.centered-text-block {
@@ -181,10 +298,11 @@
         }
 
         .main-title.large-main-title {
-            font-size: 56px;
+            font-size: 2.8rem;
+            font-weight: 400;
             letter-spacing: 2px;
-            margin-bottom: 12px;
-            word-break: break-word;
+            margin-bottom: 0.2em;
+            text-align: left;
         }
 
         .subtitle.large-subtitle {
@@ -195,6 +313,35 @@
             word-break: break-word;
         }
 
+        .intro-cv-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: flex-start;
+            margin-top: 24px;
+        }
+        .cv-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #111;
+            color: #fff;
+            font-family: 'Telegraf', Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            border: none;
+            border-radius: 32px;
+            text-decoration: none;
+            transition: background 0.18s, color 0.18s, transform 0.18s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+            cursor: pointer;
+            text-align: center;
+        }
+        .cv-btn:hover, .cv-btn:focus {
+            background: #ffe07b;
+            color: #111;
+            transform: scale(1.05);
+            outline: none;
+        }
+
         /* Responsive styles for mobile */
         @media (max-width: 700px) {
             .main-content.intro-section {
@@ -202,10 +349,69 @@
                 min-height: unset;
                 padding-bottom: 32px;
             }
-            .intro-flex {
+
+            .intro-3col-flex {
                 flex-direction: column;
-                gap: 28px;
-                padding: 0 8vw;
+                gap: 18px;
+                padding: 0 2vw;
+                align-items: center;
+            }
+            .intro-about, .right-intro-text {
+                max-width: 100vw;
+                min-width: 0;
+                align-items: center;
+                text-align: center;
+            }
+            .intro-flex {
+                flex-direction: column-reverse;
+                gap: 18px;
+                padding: 0 2vw;
+                align-items: center;
+            }
+
+            .custom-intro-layout {
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 18px;
+            }
+            
+            .intro-left-space {
+                display: none;
+            }
+            .intro-right-content {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 18px;
+                width: 100%;
+            }
+
+            .left-intro-text {
+                align-items: center;
+                text-align: center;
+                width: 100%;
+                max-width: 100vw;
+            }
+
+            .intro-profile-img-wrapper {
+                order: 2;
+                width: 100%;
+                justify-content: center;
+                display: flex;
+            }
+            
+            .intro-about {
+                order: 3;
+                max-width: 100vw;
+                min-width: 0;
+                align-items: center;
+                text-align: center;
+            }
+
+            .intro-hi, .intro-iam, .intro-role {
+                text-align: center;
+                width: 100%;
             }
             .large-profile-img {
                 width: 70vw;
@@ -215,10 +421,11 @@
                 max-width: 90vw;
                 max-height: 90vw;
             }
+
             .main-title.large-main-title {
-                font-size: 32px;
-                margin-bottom: 8px;
-                letter-spacing: 1px;
+                font-size: 2rem;
+                margin-bottom: 0.2em;
+                text-align: center;
             }
             .subtitle.large-subtitle {
                 font-size: 18px;
@@ -228,6 +435,28 @@
             .intro-text-block.centered-text-block {
                 padding: 0 2vw;
                 max-width: 100vw;
+            }
+
+            .intro-text-block.right-intro-text {
+            order: 1;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 100vw;
+            }
+            .intro-hi, .intro-iam, .intro-role {
+                text-align: center;
+                width: 100%;
+            }
+            .intro-cv-buttons {
+                flex-direction: column;
+                gap: 14px;
+                align-items: center;
+            }
+            .cv-btn {
+                width: 80vw;
+                font-size: 18px;
+                padding: 12px 0;
             }
         }
         /* === SYNTHSNIP SECTION === */
@@ -683,6 +912,33 @@
             cursor: pointer;
             transition: background 0.2s, border 0.2s;
         }
+        .gallery-arrow:hover .arrow-img {
+            transform: scale(1.15);
+            transition: transform 0.18s;
+        }
+
+        .gallery-arrow.right:hover .arrow-img {
+            transform: rotate(180deg) scale(1.15);
+            transition: transform 0.18s;
+        }
+        .gallery-arrow.left:hover .arrow-img {
+            transform: scale(1.15);
+            transition: transform 0.18s;
+        }
+
+        .gallery-arrow:hover,
+        .gallery-arrow:focus {
+            background: #ffe07b33; /* Soft yellow highlight */
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            outline: none;
+        }
+
+        .gallery-arrow:hover .arrow-img,
+        .gallery-arrow:focus .arrow-img {
+            transform: scale(1.15);
+            transition: transform 0.18s;
+        }
+
         .gallery-indicator.active {
             background: #ffe07b;
             border: 2px solid #ffe07b;
@@ -926,21 +1182,31 @@
 
     <!-- === INTRODUCTION SECTION === -->
     <div class="main-content intro-section">
-        <div class="intro-flex centered-intro">
-            <img src="images/nathanhor.jpg" alt="Nathan Hor" class="profile-img large-profile-img">
-            <div class="intro-text-block centered-text-block">
-                <div class="main-title large-main-title">NATHAN HOR</div>
-                <div class="subtitle large-subtitle">
-                    <a href="#synthsnip-section" class="founder-link">Founder of Syntech Solutions</a>
-                </div>
-                <div class="subtitle large-subtitle">
-                    <a href="#developer-portfolio" class="founder-link">Java & Unity Developer</a>
-                </div>
-                <div class="subtitle large-subtitle">
-                    <a href="#photography-portfolio" class="founder-link">Photographer & Videographer</a>
-                </div>
-            </div>
+    <div class="intro-3col-flex">
+        <div class="intro-about">
+        <div class="about-title-main">About Me</div>
+        <div class="about-desc">
+            I am a prolific Java developer with a growing portfolio of independent projects, underpinned by a deep commitment to continuous learning and innovation. Actively embedded within Brighton’s vibrant tech ecosystem, championing collaborative growth, community-led initiatives, and cross-disciplinary knowledge exchange.
         </div>
+        </div>
+        <div class="intro-profile-img-wrapper">
+        <img src="images/nathanhor.jpg" alt="Nathan Hor" class="profile-img large-profile-img">
+        </div>
+        <div class="intro-text-block right-intro-text">
+        <div class="intro-hi">Hi I’m</div>
+        <div class="main-title large-main-title">NATHAN HOR</div>
+        <div class="intro-iam">I am a :</div>
+        <div class="intro-role">
+            <span class="founder-link">Founder of Syntech Solutions</span><br>
+            <span class="founder-link">Java &amp; Unity Developer</span><br>
+            <span class="founder-link">Photographer &amp; Videographer</span>
+        </div>
+        <div class="intro-cv-buttons">
+            <a href="pdfs/CompSci_CV.pdf" target="_blank" class="cv-btn">Comp Sci CV</a>
+            <a href="pdfs/Marketing_CV.pdf" target="_blank" class="cv-btn">Marketing CV</a>
+        </div>
+        </div>
+    </div>
     </div>
 
     <!-- === SYNTHSNIP SECTION === -->
