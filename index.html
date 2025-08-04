@@ -56,7 +56,7 @@
             order: -1; /* Move to the leftmost side */
             background: none;
             border: none;
-            color: #4f8cff;
+            color: #0a0a0a;
             cursor: pointer;
             font-weight: 700;
             transition: color 0.2s;
@@ -338,7 +338,17 @@
         .cta-link:hover { text-decoration: underline; }
 
         @media (max-width: 900px) {
-            /* ...existing code... */
+
+            .synthsnip-section {
+                position: relative;
+                padding-bottom: 120px; /* Add space for CTA */
+            }
+            .synthsnip-bottom-cta {
+                position: static;
+                margin-top: 32px;
+                padding-bottom: 0;
+                width: 100vw;
+            }
             .synthsnip-flex-row {
                 flex-direction: column;
                 gap: 20px;
@@ -386,7 +396,7 @@
             font-family: 'Telegraf', Arial, sans-serif;
             font-size: 32px;
             font-weight: 700;
-            text-align: left;    /* Align text to the left */
+            text-align: center;    /* Center the text */
             margin-bottom: 22px;
             margin-top: 0px;
             letter-spacing: 1px;
