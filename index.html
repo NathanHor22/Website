@@ -14,7 +14,8 @@
         html { scroll-behavior: smooth; }
         body {
             margin: 0;
-            background: #f5f7fa; /* Always light background */
+            background: #fff !important;
+            background-color: #fff !important;
             color: #222;
             font-family: 'Telegraf', Arial, sans-serif;
         }
@@ -69,20 +70,27 @@
 
         @media (max-width: 700px) {
             .about-title {
-                position: absolute;
-                left: 50%;
-                top: 18px;
-                transform: translateX(-50%);
-                font-size: 7vw;
-                width: 90vw;
+                position: static;
+                display: block;
+                width: 100vw;
                 max-width: 100vw;
-                white-space: normal;
+                font-size: 7vw;
+                margin: 0 auto 18px auto;
                 text-align: center;
-                line-height: 1.1;
-                padding: 0;
+                left: unset;
+                top: unset;
+                transform: none;
+                z-index: 10;
+                background: transparent;
+                padding: 0 2vw;
+                white-space: normal;
             }
             .top-bar {
+                position: static;
+                flex-direction: column;
+                align-items: stretch;
                 padding: 18px 10px 0 10px;
+                height: auto;
             }
         }
         /* === INTRODUCTION SECTION === */
@@ -328,6 +336,50 @@
             transition: text-decoration 0.2s;
         }
         .cta-link:hover { text-decoration: underline; }
+
+        @media (max-width: 900px) {
+            /* ...existing code... */
+            .synthsnip-flex-row {
+                flex-direction: column;
+                gap: 20px;
+                width: 100%;
+                align-items: center;
+            }
+            .synthsnip-col {
+                max-width: 90vw;
+                text-align: center;
+            }
+            .what-we-do {
+                max-width: 320px;
+                width: 100%;
+                margin: 0 auto;
+            }
+            .what-we-do .who-desc {
+                min-height: 120px;
+                font-size: 17px;
+                line-height: 1.7;
+                padding: 12px 0;
+                display: block;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            .who-main-title,
+            .who-title,
+            .what-we-do .who-main-title,
+            .what-we-do .who-title {
+                text-align: center !important;
+                justify-content: center;
+            }
+            .who-desc,
+            .what-we-do .who-desc {
+                text-align: justify;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                max-width: 600px;
+            }
+        }
+
         /* === DEVELOPER PORTFOLIO SECTION === */
 
         .portfolio-title {
@@ -621,27 +673,39 @@
                 flex-direction: column;
                 width: 98vw;
                 gap: 24px;
+                align-items: center;
             }
             .photography-cards {
-                flex-direction: row;
+                flex-direction: column;
                 width: 100%;
+                max-width: 400px;
                 gap: 12px;
-                justify-content: center;
-                align-items: flex-start;
+                align-items: center;
+                justify-content: flex-start;
+                margin: 0 auto 10px auto;
+                order: 0;
             }
             .photography-card {
-                width: 152px;
-                height: 108px;
-                flex-direction: column;
-                gap: 6px;
+                width: 100%;
+                max-width: 350px;
+                height: 90px;
+                flex-direction: row;
+                gap: 12px;
+                margin: 0;
             }
             .photography-card img {
-                width: 100%;
-                height: 72px;
-                border-radius: 10px 10px 0 0;
+                width: 90px;
+                height: 90px;
+                border-radius: 10px 0 0 10px;
             }
-            .photography-gallery img {
-                max-width: 40%; /* 2 per row on mobile */
+            .photography-gallery {
+                order: 1;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center; /* Center gallery images */
+                align-items: center;
+                width: 100%;
+                margin: 0 auto;
             }
         }
 
