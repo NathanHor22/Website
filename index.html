@@ -1201,10 +1201,10 @@
             <span class="founder-link">Java &amp; Unity Developer</span><br>
             <span class="founder-link">Photographer &amp; Videographer</span>
         </div>
-        <div class="intro-cv-buttons">
-            <a href="Documents/comp_sci_resume.pdf" target="_blank" class="cv-btn">Comp Sci CV</a>
-            <a href="Documents/marketing_resume.pdf" target="_blank" class="cv-btn">Marketing CV</a>
-        </div>
+            <div class="intro-cv-buttons">
+                <a href="Documents/comp_sci_resume.pdf" class="cv-btn" onclick="openPdfWithTitle(event, 'Documents/comp_sci_resume.pdf', 'Comp Sci Resume')">Comp Sci CV</a>
+                <a href="Documents/marketing_resume.pdf" class="cv-btn" onclick="openPdfWithTitle(event, 'Documents/marketing_resume.pdf', 'Marketing Resume')">Marketing CV</a>
+            </div>
         </div>
     </div>
     </div>
@@ -1355,6 +1355,22 @@
     </section>
 
     <script>
+
+    function openPdfWithTitle(e, pdfUrl, title) {
+            e.preventDefault();
+            const win = window.open('', '_blank');
+            if (win) {
+                win.document.write(`
+                    <title>${title}</title>
+                    <style>body,html{margin:0;height:100%;width:100%;overflow:hidden;}</style>
+                    <embed src="${pdfUrl}" type="application/pdf" width="100%" height="100%" style="min-height:100vh;">
+                `);
+                win.document.close();
+            } else {
+                // Fallback: open PDF directly if popup blocked
+                window.open(pdfUrl, '_blank');
+            }
+        }
     // Portfolio dropdowns
     function toggleDropdown(btn) {
         const dropdown = btn.nextElementSibling;
