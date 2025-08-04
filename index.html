@@ -595,23 +595,97 @@
         }
         .photography-content {
             display: flex;
+            flex-direction: row;
             width: 80vw;
             max-width: 1400px;
             min-height: 500px;
             margin: 0 auto;
             gap: 40px;
+            align-items: center;
+            justify-content: center;
         }
         .photography-gallery {
-            flex: 1 1 0;
+            position: relative;
+            width: 100%;
+            height: 500px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            overflow: hidden;
+            flex: 2 1 0;
             min-width: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+        }
+        .gallery-image {
             width: 100%;
             height: 100%;
-            transition: opacity 0.5s;
+            object-fit: contain;
+            margin: 0 auto;
+            display: block;
+            background: #fff;
+            /* Remove border-radius and box-shadow */
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            transition: object-fit 0.2s, opacity 0.4s;
             opacity: 1;
+        }
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent; /* Make button background transparent */
+            color: inherit;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            z-index: 2;
+            border-radius: 50%;
+            transition: background 0.2s;
+            user-select: none;
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-img {
+            width: 38px;
+            height: 38px;
+            display: block;
+            pointer-events: none;
+        }
+
+        .gallery-image.landscape {
+            object-fit: cover; /* Enlarge landscape images */
+        }
+        .gallery-arrow.left { left: 12px; }
+        .gallery-arrow.right { right: 12px; }
+
+        .gallery-indicators {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .gallery-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fff5;
+            border: 2px solid #fff;
+            cursor: pointer;
+            transition: background 0.2s, border 0.2s;
+        }
+        .gallery-indicator.active {
+            background: #ffe07b;
+            border: 2px solid #ffe07b;
         }
 
         .photography-gallery.fade-out {
@@ -621,20 +695,14 @@
         .photography-gallery.fade-in {
             opacity: 1;
         }
-        
-        .photography-gallery img {
-            display: block;
-            height: auto;
-            max-width: 26.66%; /* 3 images per row on large screens */
-            width: auto;
-            flex: 1 1 auto;
-            object-fit: contain;
-            border-radius: 0;
-            box-shadow: none;
-            margin: 0;
+        .gallery-image.fade-out {
+            opacity: 0;
+        }
+        .gallery-image.fade-in {
+            opacity: 1;
         }
         .photography-cards {
-            width: 312px;
+            flex: 1 1 0;
             display: flex;
             flex-direction: column;
             gap: 22px;
@@ -681,12 +749,12 @@
         @media (max-width: 900px) {
             .photography-content {
                 flex-direction: column;
-                width: 98vw;
                 gap: 24px;
+                width: 98vw;
                 align-items: center;
+                justify-content: flex-start;
             }
             .photography-cards {
-                flex-direction: column;
                 width: 100%;
                 max-width: 400px;
                 gap: 12px;
@@ -709,13 +777,32 @@
                 border-radius: 10px 0 0 10px;
             }
             .photography-gallery {
-                order: 1;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center; /* Center gallery images */
-                align-items: center;
-                width: 100%;
+                width: 100vw;
+                max-width: 100vw;
+                height: 70vw;         /* Make carousel taller for landscape */
+                min-height: 220px;
+                max-height: 80vw;
                 margin: 0 auto;
+                order: 1;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .gallery-image {
+                width: 100%;
+                height: 100%;
+                max-width: 100vw;
+                max-height: 70vw;
+                object-fit: contain;
+                border-radius: 0;
+                box-shadow: none;
+                background: #fff;
+            }
+            .gallery-image.landscape {
+                object-fit: cover;    /* Landscape images fill the box */
+            }
+            .portfolio-title {
+                font-size: 7vw;
+                margin-bottom: 18px;
             }
         }
 
@@ -953,8 +1040,15 @@
         <section id="photography-portfolio" class="main-content photography-portfolio-section">
             <div class="portfolio-title">Photography Portfolio</div>
             <div class="photography-content">
-                <div class="photography-gallery" id="photography-gallery">
-                    <!-- Images will be injected by JS -->
+                <div class="photography-gallery" id="photoGallery">
+                    <button class="gallery-arrow left" id="galleryPrev" aria-label="Previous photo">
+                        <img src="images/arrow.png" alt="Previous" class="arrow-img" />
+                    </button>
+                    <img src="" alt="Gallery Photo" class="gallery-image" id="galleryImage">
+                    <button class="gallery-arrow right" id="galleryNext" aria-label="Next photo">
+                        <img src="images/arrow.png" alt="Next" class="arrow-img" style="transform: rotate(180deg);" />
+                    </button>
+                    <div class="gallery-indicators" id="galleryIndicators"></div>
                 </div>
                 <div class="photography-cards">
                     <div class="photography-card selected" data-category="sports">
@@ -971,7 +1065,7 @@
                     </div>
                 </div>
             </div>
-    <!-- Instagram block -->
+            <!-- Instagram block -->
             <div class="instagram-portfolio-block">
                 <div class="instagram-portfolio-text">
                     Explore my full portfolio on
@@ -1047,43 +1141,88 @@
                 "images/graphicposter/posters6.png",
                 "images/graphicposter/posters7.png",
                 "images/graphicposter/posters3.png",
-                
-                
             ]
         };
 
-        function renderGallery(category) {
-            const gallery = document.getElementById('photography-gallery');
-            // Fade out
-            gallery.classList.add('fade-out');
-            setTimeout(() => {
-                gallery.innerHTML = '';
-                photoCategories[category].forEach(src => {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    gallery.appendChild(img);
-                });
-                // Fade in
-                gallery.classList.remove('fade-out');
-                gallery.classList.add('fade-in');
-                setTimeout(() => {
-                    gallery.classList.remove('fade-in');
-                }, 500);
-            }, 400);
-        }
+        let currentCategory = 'sports';
+        let currentIndex = 0;
 
-        document.querySelectorAll('.photography-card').forEach(card => {
-            card.addEventListener('click', function() {
-                if (this.classList.contains('selected')) return;
-                document.querySelectorAll('.photography-card').forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-                renderGallery(this.dataset.category);
-            });
+        const galleryImage = document.getElementById('galleryImage');
+        const galleryIndicators = document.getElementById('galleryIndicators');
+
+ function showGalleryImage(newIndex) {
+    const images = photoCategories[currentCategory];
+    // Fade out
+    galleryImage.classList.remove('fade-in');
+    galleryImage.classList.add('fade-out');
+    setTimeout(() => {
+        currentIndex = newIndex;
+        galleryImage.src = images[currentIndex];
+        galleryImage.alt = currentCategory + " photo " + (currentIndex + 1);
+
+        // Remove landscape class by default
+        galleryImage.classList.remove('landscape');
+        // Preload image to check aspect ratio
+        const img = new window.Image();
+        img.onload = function() {
+            if (img.width > img.height) {
+                galleryImage.classList.add('landscape');
+            }
+        };
+        img.src = images[currentIndex];
+
+        // Fade in
+        galleryImage.classList.remove('fade-out');
+        galleryImage.classList.add('fade-in');
+
+        // Update indicators
+        galleryIndicators.innerHTML = '';
+        images.forEach((_, idx) => {
+            const dot = document.createElement('span');
+            dot.className = 'gallery-indicator' + (idx === currentIndex ? ' active' : '');
+            dot.onclick = () => { showGalleryImage(idx); };
+            galleryIndicators.appendChild(dot);
         });
+    }, 400); // Match transition duration
+}
 
+// Navigation handlers
+document.getElementById('galleryPrev').onclick = function() {
+    const images = photoCategories[currentCategory];
+    let newIndex = (currentIndex - 1 + images.length) % images.length;
+    showGalleryImage(newIndex);
+};
+document.getElementById('galleryNext').onclick = function() {
+    const images = photoCategories[currentCategory];
+    let newIndex = (currentIndex + 1) % images.length;
+    showGalleryImage(newIndex);
+};
+
+// Touch/swipe support
+let startX = 0;
+galleryImage.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+});
+galleryImage.addEventListener('touchend', e => {
+    let endX = e.changedTouches[0].clientX;
+    if (endX - startX > 50) {
+        document.getElementById('galleryPrev').click();
+    } else if (startX - endX > 50) {
+        document.getElementById('galleryNext').click();
+    }
+});
+
+// Card click logic
+document.querySelectorAll('.photography-card').forEach(card => {
+    card.addEventListener('click', function() {
+        if (this.classList.contains('selected')) return;
+        document.querySelectorAll('.photography-card').forEach(c => c.classList.remove('selected'));
+        this.classList.add('selected');
+        currentCategory = this.dataset.category;
+        showGalleryImage(0);
+    });
+});
 
 // Initial render
-renderGallery('sports');
-
-
+showGalleryImage(0);
     </script>
