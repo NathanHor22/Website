@@ -585,7 +585,7 @@
         .photography-portfolio-section {
             width: 100vw;
             min-height: 100vh;
-            background: #f5f7fa;
+            background: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1150,41 +1150,41 @@
         const galleryImage = document.getElementById('galleryImage');
         const galleryIndicators = document.getElementById('galleryIndicators');
 
- function showGalleryImage(newIndex) {
-    const images = photoCategories[currentCategory];
-    // Fade out
-    galleryImage.classList.remove('fade-in');
-    galleryImage.classList.add('fade-out');
-    setTimeout(() => {
-        currentIndex = newIndex;
-        galleryImage.src = images[currentIndex];
-        galleryImage.alt = currentCategory + " photo " + (currentIndex + 1);
+        function showGalleryImage(newIndex) {
+            const images = photoCategories[currentCategory];
+            galleryImage.classList.remove('fade-in');
+            galleryImage.classList.add('fade-out');
 
-        // Remove landscape class by default
-        galleryImage.classList.remove('landscape');
-        // Preload image to check aspect ratio
-        const img = new window.Image();
-        img.onload = function() {
-            if (img.width > img.height) {
-                galleryImage.classList.add('landscape');
-            }
-        };
-        img.src = images[currentIndex];
+            // Preload the new image
+            const img = new window.Image();
+            img.onload = function() {
+                setTimeout(() => {
+                    currentIndex = newIndex;
+                    galleryImage.src = images[currentIndex];
+                    galleryImage.alt = currentCategory + " photo " + (currentIndex + 1);
 
-        // Fade in
-        galleryImage.classList.remove('fade-out');
-        galleryImage.classList.add('fade-in');
+                    // Remove landscape class by default
+                    galleryImage.classList.remove('landscape');
+                    if (img.width > img.height) {
+                        galleryImage.classList.add('landscape');
+                    }
 
-        // Update indicators
-        galleryIndicators.innerHTML = '';
-        images.forEach((_, idx) => {
-            const dot = document.createElement('span');
-            dot.className = 'gallery-indicator' + (idx === currentIndex ? ' active' : '');
-            dot.onclick = () => { showGalleryImage(idx); };
-            galleryIndicators.appendChild(dot);
-        });
-    }, 400); // Match transition duration
-}
+                    // Fade in as soon as the image is swapped
+                    galleryImage.classList.remove('fade-out');
+                    galleryImage.classList.add('fade-in');
+
+                    // Update indicators
+                    galleryIndicators.innerHTML = '';
+                    images.forEach((_, idx) => {
+                        const dot = document.createElement('span');
+                        dot.className = 'gallery-indicator' + (idx === currentIndex ? ' active' : '');
+                        dot.onclick = () => { showGalleryImage(idx); };
+                        galleryIndicators.appendChild(dot);
+                    });
+                }, 100); // Only a short delay to allow fade-out, not the full 400ms
+            };
+            img.src = images[newIndex];
+        }
 
 // Navigation handlers
 document.getElementById('galleryPrev').onclick = function() {
