@@ -1197,9 +1197,9 @@
         <div class="main-title large-main-title">NATHAN HOR</div>
         <div class="intro-iam">I am a :</div>
         <div class="intro-role">
-            <span class="founder-link">Founder of Syntech Solutions</span><br>
-            <span class="founder-link">Java &amp; Unity Developer</span><br>
-            <span class="founder-link">Photographer &amp; Videographer</span>
+            <span class="founder-link" id="founder-syntech">Founder of Syntech Solutions</span><br>
+            <span class="founder-link" id="founder-dev">Java &amp; Unity Developer</span><br>
+            <span class="founder-link" id="founder-photo">Photographer &amp; Videographer</span>
         </div>
             <div class="intro-cv-buttons">
                 <a href="Documents/comp_sci_resume.pdf" class="cv-btn" onclick="openPdfWithTitle(event, 'Documents/comp_sci_resume.pdf', 'Comp Sci Resume')">Comp Sci CV</a>
@@ -1356,6 +1356,19 @@
 
     <script>
 
+        // Founder links scroll to sections
+        document.getElementById('founder-syntech').onclick = function() {
+            document.getElementById('synthsnip-section').scrollIntoView({behavior: 'smooth'});
+        };
+        document.getElementById('founder-dev').onclick = function() {
+            document.getElementById('developer-portfolio').scrollIntoView({behavior: 'smooth'});
+        };
+        document.getElementById('founder-photo').onclick = function() {
+            document.getElementById('photography-portfolio').scrollIntoView({behavior: 'smooth'});
+        };
+
+
+        // Open PDF in new window with title
     function openPdfWithTitle(e, pdfUrl, title) {
             e.preventDefault();
             const win = window.open('', '_blank');
@@ -1400,10 +1413,12 @@
             sports: [
                 "images/sports/sports1.jpg",
                 "images/sports/sports2.jpg",
+                "images/sports/sports4.jpg",
                 "images/sports/sports3.jpg",
                 "images/sports/sports0.jpg",
                 "images/sports/sports5.jpg",
                 "images/sports/sports7.jpg",
+                "images/sports/sports8.jpg",
             ],
             events: [
                 "images/events/events1.jpg",
@@ -1418,11 +1433,14 @@
             ],
             posters: [
                 "images/graphicposter/posters5.png",
+                "images/graphicposter/posters8.png",
+                "images/graphicposter/posters9.png",
                 "images/graphicposter/posters4.png",
                 "images/graphicposter/posters2.png",
                 "images/graphicposter/posters6.png",
                 "images/graphicposter/posters7.png",
                 "images/graphicposter/posters3.png",
+                "images/graphicposter/posters1.png",
             ]
         };
 
