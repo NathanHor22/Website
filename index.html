@@ -1203,7 +1203,7 @@
         </div>
             <div class="intro-cv-buttons">
                 <a href="Documents/comp_sci_resume.pdf" class="cv-btn" onclick="openPdfWithTitle(event, 'Documents/comp_sci_resume.pdf', 'Comp Sci Resume')">Comp Sci CV</a>
-                <a href="Documents/marketing_resume.pdf" class="cv-btn" onclick="openPdfWithTitle(event, 'Documents/marketing_resume.pdf', 'Marketing Resume')">Marketing CV</a>
+                <a href="Documents/marketing_portfolio.pdf" class="cv-btn" onclick="openPdfWithTitle(event, 'Documents/marketing_portfolio.pdf', 'Marketing Portfolio')">Marketing Portfolio</a>
             </div>
         </div>
     </div>
@@ -1485,6 +1485,31 @@
             };
             img.src = images[newIndex];
         }
+
+        function preloadCategoryImages(category) {
+    photoCategories[category].forEach(src => {
+        const img = new window.Image();
+        img.src = src;
+    });
+}
+
+        // Preload all images for all categories on page load (optional, for best speed)
+        // Object.keys(photoCategories).forEach(preloadCategoryImages);
+
+        // Preload only the current category on page load
+        preloadCategoryImages(currentCategory);
+
+        // When switching category, preload that category's images
+        document.querySelectorAll('.photography-card').forEach(card => {
+            card.addEventListener('click', function() {
+                if (this.classList.contains('selected')) return;
+                document.querySelectorAll('.photography-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                currentCategory = this.dataset.category;
+                preloadCategoryImages(currentCategory); // <-- Preload new category images
+                showGalleryImage(0);
+            });
+        });
 
 // Navigation handlers
 document.getElementById('galleryPrev').onclick = function() {
